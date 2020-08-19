@@ -1,0 +1,61 @@
+/**index.wxss**/
+@import "../template/common.wxss";
+
+.logo{
+  width: 96.05px;
+  height: 135.15px;
+  float: left;
+  margin-top: 139.4px;
+  margin-left: 37%;
+}
+
+.slogin{
+  height: 41.65px;
+  width: 100%;
+  float: left;
+  margin-top: 32.3px;
+  text-align: center;
+  align-items: center;
+}
+
+.slogin .text_1{
+  font-size:15px;
+  font-family:PingFangSC-Semibold,PingFang SC;
+  font-weight:600;
+  color:rgba(255,255,255,1);
+  line-height:30px;
+  letter-spacing:12px;
+  margin-left: 3%;
+}
+
+.slogin .text_2{
+  font-size:10px;
+  font-family:PingFangSC-Semibold,PingFang SC;
+  font-weight:600;
+  color: rgba(255, 255, 255, 0.59);
+  line-height:22px;
+}
+
+.login_type{
+  height:12.75px;
+  width: 100%;
+  float: left;
+  margin-top:25%;
+  text-align: center;
+}
+
+.login_type text{
+  font-size:10.2px;
+  font-family:PingFangSC-Light,PingFang SC;
+  font-weight:300;
+  color:rgba(255,255,255,1);
+  line-height:17.0px;
+}
+
+.we_login{
+  height: 4%;
+  width:9.5%;
+  float: left;
+  margin-top:20px;
+  margin-left: 46%;
+}

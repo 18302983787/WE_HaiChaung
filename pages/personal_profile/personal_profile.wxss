@@ -1,0 +1,106 @@
+/* pages/personal_profile/personal_profile.wxss */
+@import "../template/common.wxss";
+
+
+.bg_color{
+  height:144.5px;
+  border:1px rgba(255, 255, 255, 0.001) solid;
+  position: absolute;
+  z-index: 1;
+}
+
+.head_image{
+  width: 88px;
+  height: 88px;
+  border-radius: 15%;
+  margin-top: 100.3px;
+  margin-left: 37.5%;
+  float: left;
+  position: absolute;
+  z-index: 2;
+  overflow:hidden;  
+  display: block;  
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+}
+
+.personal_profile{
+  height: 900px;
+  width:100%;
+  background:rgba(255,255,255,1);
+  border-radius:28px 28px 0px 0px;
+  margin-top: 144.5px;
+  position: absolute;
+  z-index: 1;
+}
+
+.infos{
+  width: 70%;
+  margin-top: 67px;
+  margin-left: 15%;
+  float: left;
+  align-items: center;
+}
+
+.info{
+  width: 100%;
+  height: 57.8px;
+  margin-bottom: 44px;
+  float: left;
+  border-bottom:1px rgba(0,41,255,0.07) solid;
+
+}
+
+.info_gender{
+  width: 100%;
+  height: 57.8px;
+  margin-bottom: 44px;
+  float: left;
+}
+
+.gender_choice{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.gender{
+  width: 45%;
+  height:23.8px;
+  margin-top: 12.75px;
+  text-align: center;
+  border-bottom:1px rgba(0,41,255,0.07) solid;
+}
+
+.gender text{
+  font-size:17.0px;
+  font-family:PingFangSC-Semibold,PingFang SC;
+  font-weight:600;
+  color:rgba(62, 129, 255, 1);
+  line-height:23.8px;
+}
+
+.title{
+  width: 100%;
+  height:17.0px;
+  font-size:11.9px;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(0,41,255,0.48);
+  line-height:17.0px;
+  text-align: center;
+}
+
+
+.value{
+  width: 100%;
+  height:23.8px;
+  font-size:17.0px;
+  font-family:PingFangSC-Semibold,PingFang SC;
+  font-weight:600;
+  color:rgba(62, 129, 255, 1);
+  line-height:23.8px;
+  text-align: center;
+  margin-top: 12.75px;
+  float: left;
+}
+

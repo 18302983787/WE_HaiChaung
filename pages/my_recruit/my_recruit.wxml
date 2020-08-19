@@ -1,0 +1,24 @@
+<!--pages/my_recruit/my_recruit.wxml-->
+<view class="content">
+  <view class="nav_back" bindtap="go_back"></view>
+  <view class="nav_back_title">我的招聘</view>
+  <view class="info_head"></view>
+  <view class="detail">
+    <view class="type_button_A"><text>进行中</text></view>
+    <view class="type_button_B"><text>已过期</text></view>
+    <view class="activties">  
+      <view class="act">
+        <view class="act_image"></view>
+        <view class="act_name">招聘名称</view>
+        <view class="comments">2020年6月例会</view>
+        <view class="time">2020-06-24</view>
+      </view>
+      <view class="act">
+        <view class="act_image"></view>
+        <view class="act_name">招聘名称</view>
+        <view class="comments">2020年6月例会</view>
+        <view class="time">2020-06-24</view>
+      </view>
+    </view>
+  </view>
+</view>

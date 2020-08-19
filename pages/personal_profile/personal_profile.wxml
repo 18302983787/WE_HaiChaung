@@ -1,0 +1,41 @@
+<!--pages/personal_profile/personal_profile.wxml-->
+<view class="content">
+  <view class="bg_color"></view>
+  <view class="nav_back" bindtap="go_back"></view>
+  <view class="nav_back_title">个人资料</view>
+  <view class="head_image">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <view class="personal_profile">
+    <view class="infos">
+      <view class="info">
+        <view class="title">姓名</view>
+        <view class="value">{{user_info.username}}</view>
+      </view>
+      <view class="info">
+        <view class="title">性别</view>
+        <view class="value">{{user_info.gender}}</view>
+        <!-- <view class="gender_choice"> -->
+          <!-- <view class="gender"><text>{{user_info.gender}}</text></view> -->
+          <!-- <view class="gender"><text>{{user_info.gender}}</text></view> -->
+        <!-- </view> -->
+      </view>
+      <view class="info">
+        <view class="title">年龄</view>
+        <view class="value">{{user_info.age}}</view>
+      </view>
+      <view class="info">
+        <view class="title">生日</view>
+        <view class="value">{{user_info.birth}}</view>
+      </view>
+      <view class="info">
+        <view class="title">现居地</view>
+        <view class="value">{{user_info.loc}}</view>
+      </view>
+      <view class="info">
+        <view class="title">毕业院校</view>
+        <view class="value">{{user_info.graduate}}</view>
+      </view>
+    </view>
+  </view>
+</view>

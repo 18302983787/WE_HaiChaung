@@ -1,0 +1,241 @@
+/* pages/user_center/user_center.wxss */
+
+@import "../template/common.wxss";
+
+
+.detail{
+  height: 290px;
+}
+
+.info_head{
+  height:290px;
+  border:1px rgba(255, 255, 255, 0.001) solid;
+}
+
+.head_image{
+  height: 88.39px;
+  width: 88.39px;
+  margin-top: 80.75px;
+  margin-left: 22.098px;
+  float: left;
+  border-radius: 50%;
+  overflow:hidden;  
+  display: block;  
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+}
+
+.follows{
+  height: 54.4px;
+  margin-top: 116.45px;
+  margin-left: 54.4px;
+  float: left;  
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  /* font-style: ; */
+}
+
+.fans{
+  height: 54.4px;
+  margin-top: 116.45px;
+  margin-left: 34.85px;
+  float: left;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.points{
+  height: 54.4px;
+  margin-top: 116.45px;
+  margin-left: 30.598px;
+  float: left;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.t_wenyue{
+  text-align: center;
+  font-size: 25.5px;
+  line-height: 31.45px;
+  color: #FFFFFF;
+}
+
+.t_normal{
+  text-align: center;
+  font-size: 13.6px;
+  line-height: 18.7px;
+  color:rgba(255, 255, 255, 0.77);
+}
+
+.user{
+  width: 141.1px;
+  height: 52px;
+  margin-top: 187.0px;
+  margin-left: 22px;
+  
+}
+
+.t_username{
+  height: 31.45px;
+  width: 10%;
+  margin-top: 187.0px;
+  text-align: center;
+  font-size: 22px;
+  line-height: 31.45px;
+  color: #FFFFFF;
+}
+
+.i_modify{
+  height: 13.6px;
+  width: 13.6px;
+  margin-top: 193px;
+  float: left;
+  border:1px red solid;
+
+}
+.tag_content{
+  height: 17px;
+  margin-top: 5.95px;
+  display:flex;
+  flex-direction:row;
+  justify-content:left;
+}
+
+.tag{
+  height: 25px;
+  width: 38.25px;
+  text-align: center;
+  margin-right: 6px;
+  border-radius: 10.5px;
+  background:rgba(255, 255, 255, 0.2);
+}
+
+.tag text{
+  font-size: 11.049px;
+  color:rgba(255, 255, 255, 0.95);
+}
+
+.my_act{
+  height: 68.0px;
+  width: 42%;
+  margin-top: 34px;
+  margin-left: 5%;
+  border-radius: 20.0px;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 1px 25px -2px rgba(0,13,82,1);
+  float: left;
+  /* display: flex; */
+  /* flex-direction:row; */
+  /* justify-content:left; */
+}
+
+.my_act image{
+  height: 30px;
+  width: 30px;
+  margin-top: 18.7px;
+  margin-left: 17%;
+  border:1rpx red solid;
+  float: left;
+}
+
+.my_act text{
+  height:23.8px;
+  width: 68.0px;
+  margin-top:22px;
+  margin-left: 7px;
+  font-size: 17.0px;
+  color: #2D2F44;
+  float: left;
+}
+
+
+.my_job{
+  height: 68.0px;
+  width: 42%;
+  margin-top: 34px;
+  margin-left: 5%;
+  border-radius: 20.0px;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 1px 25px -2px rgba(0,13,82,1);
+  float: left;
+}
+
+.my_job image{
+  height: 30px;
+  width: 30px;
+  margin-top: 18.7px;
+  margin-left: 22.95px;
+  float: left;
+  border:1px red solid;
+}
+
+.my_job text{
+  height:23.8px;
+  width: 68.0px;
+  margin-top:22px;
+  margin-left: 7px;
+  font-size: 17.0px;
+  color: #2D2F44;
+  float: left;
+}
+
+.extra_func{
+  height: 20.4px;
+  width:90%;
+  margin-top: 40.8px;
+  margin-left: 13%;
+  /* border:1rpx red solid; */
+  float: left;
+}
+
+.extra_func .func_icon{
+  height: 20.4px;
+  width: 20.4px;
+  float: left;
+}
+
+.extra_func .func_name{
+  height:21.25px;
+  margin-left: 10.2px;
+  font-size: 15.299px;
+  font-family:PingFangSC-Medium,PingFang SC;
+  color: #2D2F44;
+  line-height:21.25px;
+  float: left;
+}
+
+.extra_func .func_desc_1{
+  height:21.25px;
+  margin-left: 112.2px;
+  font-size: 12.75px;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  float: left;
+  line-height:17px;
+  color:rgba(91, 141, 240, 1);
+}
+
+.extra_func .func_desc_2{
+  height:21.25px;
+  margin-left: 92px;
+  font-size: 12.75px;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  float: left;
+  line-height:17px;
+  color:rgba(91, 141, 240, 1);
+}
+
+.extra_func .more{
+  height: 15.299px;
+  width: 9.35px;
+  float: left;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAASCAYAAACNdSR1AAAAhUlEQVQ4T2NkYAhl1tF/n8XAwMBw5eKf6QwMB/6A2NgAo46+SxIjA8NcsOT//2suX/obiUsDo7aeSzATI8MauEl4NDCCFOnoOfcwMjIWE9IAVkysBrhiYjSgKCakAUMxPg1YFWPT8J+BIY9yxbiCknwPEooc0iOFkImwWCYtIZGURElJ/AANrY6zBnfpqwAAAABJRU5ErkJggg==");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  margin-left: 4.25px;
+  margin-top: 1.5px;
+}

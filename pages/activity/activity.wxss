@@ -1,0 +1,173 @@
+/* pages/recruit/recruit.wxss */
+@import "../template/common.wxss";
+
+.advertise_swiper{
+  width:100%;
+  height: 252.45px;
+  position: relative;
+  z-index: 10;
+}
+
+.image_z_index{
+  position: relative;
+  z-index: 10;
+}
+
+.image_z_index image{
+  width:100%;
+  height: 252.45px;
+}
+
+
+.module{
+  margin-top:16.28px;
+  margin-left: 30px;
+  height:22.2px;
+  font-size:18.7px;
+  font-family:PingFang-SC-Heavy,PingFang-SC;
+  font-weight:800;
+  color:rgba(45,47,68,1);
+  line-height:22.2px;
+}
+
+.activity{
+  margin-top: 14.06px;
+  margin-left: 11px;
+  width:94%;
+  height:187.22px;
+  background:rgba(71,134,254,0.05);
+  border-radius:16.0px;
+}
+
+.act_name{
+  float: left;
+  margin-top: 14.8px;
+  margin-left: 19.55px;
+  font-size:16.15px;
+  font-family:PingFang-SC-Heavy,PingFang-SC;
+  font-weight:800;
+  color:rgba(100,154,255,1);
+  line-height:19.24px;
+}
+
+.act_info{
+  float: left;
+  margin-top: 9px;
+  margin-left: 19.55px;
+}
+
+.act_info image{
+  width: 166.5px;
+  height: 88.06px;
+  float: left;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+.line_time{
+  width: 30%;
+  float: left;
+  margin-left: 4%;
+  margin-top: 15px;
+}
+
+.line_time text{  
+  float: left;
+  margin-left: 4.25px;
+  font-size:11px;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(45,47,68,1);
+  line-height:18px;
+}
+
+.line_time image{
+  height: 14px;
+  width: 14px;
+}
+
+.line_loc{
+  width: 35%;
+  float: left;
+  margin-left: 4%;
+  margin-top: 15px;
+}
+
+.line_loc text{  
+  float: left;
+  margin-left: 4.25px;
+  font-size:11px;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(45,47,68,1);
+  line-height:18px;
+}
+
+.line_loc image{
+  height: 14px;
+  width: 14px;
+}
+
+.line_people{
+  width: 30%;
+  float: left;
+  margin-left: 4%;
+  margin-top: 15px;
+}
+
+.line_people text{  
+  float: left;
+  margin-left: 4.25px;
+  font-size:11px;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(45,47,68,1);
+  line-height:18px;
+}
+
+.line_people image{
+  height: 14px;
+  width: 14px;
+}
+
+.sign_up{
+  width:86.58px;
+  height:24.5px;
+  margin-top: 13.32px;
+  margin-left: 19.55px;
+  background:rgba(100,154,255,1);
+  box-shadow:0px 1px 11px 2px rgba(100,154,255,0.48);
+  border-radius:4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  z-index: 0;
+}
+
+.sign_up text{
+  font-size:11.9px;
+  font-family:PingFangSC-Medium,PingFang SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height:14.8px;
+}
+
+.sign_users{
+  float: left;
+  height: 26.64px;
+  margin-top: 11.1px;
+  margin-left: 84.14999999999999px;
+}
+
+.sign_users image{
+  width:26.64px;
+  height:26.64px;
+  border:2px solid rgba(100,154,255,1);
+  float: left;
+}
+
+
+
+
+

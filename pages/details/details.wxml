@@ -1,0 +1,58 @@
+<!--pages/details/details.wxml-->
+<view class="content">
+   <view class="nav_back" bindtap="go_back"></view>
+  <view class="nav_back_title">活动详情</view>
+  <view class="info_head">
+    <image src="{{act_detail.iamge}}" mode="scaleToFill"></image>
+  </view>
+  <view class="detail">
+    <view class="content_top">
+      <text>{{act_detail.item.actname}}</text>
+      <view class="tags"> 
+        <view class="tag" wx:for="{{act_detail.tags}}" wx:key="key">{{item}}</view>
+      </view>
+    </view>
+    <view class="time">
+      <image src="../images/activity/时间@2x.png"></image>
+      <text>{{act_detail.item.act_time}}</text>
+    </view>
+    <view class="location">
+      <image src="../images/activity/指缘地点7@2x.png"></image>
+      <text>{{act_detail.item.loc}}</text>
+    </view>
+    <view class="content_text">{{act_detail.item.act_detail}}</view>
+    <!-- 主办方信息 -->
+    <view class="sponsor">
+      <image src="../images/user_center/head.jpg"></image>
+      <view class="sponsor_name">{{act_detail.sponsor.name}}</view>
+      <view class="sponsor_tags">{{act_detail.sponsor.tags}}</view>
+    </view>
+    <!-- 评论 -->
+    <!-- <view class="comments">
+      <view class="all_comments">查看全部评论</view>
+      <block wx:for="{{comments}}" wx:key="key">
+        <view class="one_comment">
+          <view class="pub_user">
+            <image src="../images/user_center/head.jpg"></image>
+            <view class="pub_user_name">{{item.pub_user}}</view>
+            <view class="pub_date">{{item.pub_date}}</view>
+            <view class="like">
+              <image src="../images/template/点赞@2x.png"></image>
+              <text>{{item.like}}</text>
+            </view>
+          </view>
+          
+          <view class="comment_text">
+            <text>{{item.text}}</text>
+          </view>
+        </view>
+      </block>
+    </view> -->
+    <!-- 底部交互栏 -->
+    <view class="content_bottom">
+      <view class="bottom_button" bindtap="signUp"><text>报名</text></view>
+      <!-- <view class="bottom_button"><text>生成海报</text></view> -->
+    </view>
+  </view>
+</view>
+

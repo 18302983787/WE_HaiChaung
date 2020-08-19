@@ -1,0 +1,122 @@
+/* pages/my_recruit/my_recruit.wxss */
+@import "../template/common.wxss";
+
+
+
+.info_head{
+  height:125px;
+  border:1px rgba(255, 255, 255, 0.001) solid;
+}
+
+
+.detail{
+  float: left;
+  height:100%;
+  border-radius: 28px 28px 0px 0px;
+  background:#FFFFFF;
+}
+
+.type_button_A{
+  width:143.65px;
+  height:57.8px;
+  background:rgba(71, 134, 254, 1);
+  border-radius:20.0px;
+  margin-top: 24.65px;
+  margin-left: 20.4px;
+  float: left;
+}
+
+.type_button_A text{
+  width:51.0px;
+  height:23.8px;
+  font-size:17.0px;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  line-height:23.8px;
+  margin-top: 17.0px;
+  margin-left: 46.75px;
+  float: left;
+}
+
+.type_button_B{
+  width:143.65px;
+  height:57.8px;
+  border-radius:20.0px;
+  border:2px solid rgba(0,41,255,0.2);
+  margin-top: 24.65px;
+  margin-left: 20.4px;
+  float: left;
+}
+
+.type_button_B text{
+  width:51.0px;
+  height:23.8px;
+  font-size:17.0px;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(0,41,255,0.3);
+  line-height:23.8px;
+  margin-top: 17.0px;
+  margin-left: 46.75px;
+  float: left;
+}
+
+.activties{
+  margin-top: 31.45px;
+  float: left;
+}
+
+.act{
+  width: 308.55px;
+  height: 69.7px;
+  margin-left: 22.95px;
+  margin-bottom: 20px;
+  float: left;
+}
+
+.act_image{
+  width:69.7px;
+  height:69.7px;
+  border-radius:9.600000000000001px;
+  border: 1px red solid;
+  float: left;
+}
+
+.act_name{
+  width:149.6px;
+  height:25.5px;
+  font-size:18.7px;
+  font-family:PingFangSC-Semibold,PingFang SC;
+  font-weight:600;
+  color:rgba(45,47,68,1);
+  line-height:25.5px;
+  margin-left:16.15px;
+  margin-top: 10.2px;
+  float: left;
+}
+
+.comments{
+  width:95.2px;
+  height:18.7px;
+  font-size:13.6px;
+  font-family:PingFang-SC-Regular,PingFang-SC;
+  font-weight:400;
+  color:rgba(45,47,68,0.63);
+  line-height:18.7px;
+  margin-left:16.15px;
+  float: left;
+}
+
+.time{
+  width:62.05px;
+  height:14.45px;
+  font-size:10.2px;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(100, 154, 255, 1);
+  line-height:14.45px;
+  margin-top: 11.9px;
+  margin-left: 246.5px;
+}
+

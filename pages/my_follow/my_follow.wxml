@@ -1,0 +1,93 @@
+<!--pages/my_follow/my_follow.wxml-->
+<view class="content">
+  <view class="nav_back" bindtap="go_back"></view>
+  <view class="nav_back_title">我的关注</view>
+  <view class="info_back">
+    <view class="info">
+      <view class="head_image"></view>
+      <view class="user_name">
+        <text>托塔李天王</text>
+        <view class="tag_content">
+          <view class="tag"><text>海归</text></view>
+          <view class="tag"><text>招聘</text></view>
+        </view>
+
+      </view>
+      <view class="follow_or_not">
+      <text>取消关注</text>
+      </view>
+    </view>
+        <view class="info">
+      <view class="head_image"></view>
+      <view class="user_name">
+        <text>托塔李天王</text>
+        <view class="tag_content">
+          <view class="tag"><text>海归</text></view>
+          <view class="tag"><text>招聘</text></view>
+        </view>
+
+      </view>
+      <view class="follow_or_not">
+      <text>取消关注</text>
+      </view>
+    </view>
+        <view class="info">
+      <view class="head_image"></view>
+      <view class="user_name">
+        <text>托塔李天王</text>
+        <view class="tag_content">
+          <view class="tag"><text>海归</text></view>
+          <view class="tag"><text>招聘</text></view>
+        </view>
+
+      </view>
+      <view class="follow_or_not">
+      <text>取消关注</text>
+      </view>
+    </view>
+        <view class="info">
+      <view class="head_image"></view>
+      <view class="user_name">
+        <text>托塔李天王</text>
+        <view class="tag_content">
+          <view class="tag"><text>海归</text></view>
+          <view class="tag"><text>招聘</text></view>
+        </view>
+
+      </view>
+      <view class="follow_or_not">
+      <text>取消关注</text>
+      </view>
+    </view>
+        <view class="info">
+      <view class="head_image"></view>
+      <view class="user_name">
+        <text>托塔李天王</text>
+        <view class="tag_content">
+          <view class="tag"><text>海归</text></view>
+          <view class="tag"><text>招聘</text></view>
+        </view>
+
+      </view>
+      <view class="follow_or_not">
+      <text>取消关注</text>
+      </view>
+    </view>
+        <view class="info">
+      <view class="head_image"></view>
+      <view class="user_name">
+        <text>托塔李天王</text>
+        <view class="tag_content">
+          <view class="tag"><text>海归</text></view>
+          <view class="tag"><text>招聘</text></view>
+        </view>
+
+      </view>
+      <view class="follow_or_not">
+      <text>取消关注</text>
+      </view>
+    </view>
+  </view>
+
+</view>
+

@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/activity/activity",
+    "pages/index/index",
+    "pages/regist/regist",
+    "pages/user_center/user_center",
+    "pages/personal_profile/personal_profile",
+    "pages/details/details",
+    "pages/my_follow/my_follow",
+    "pages/my_fans/my_fans",
+    "pages/recruit/recruit",
+    "pages/my_recruit/my_recruit",
+    "pages/my_activity/my_activity",
+    "pages/logs/logs",
+    "pages/out_link/out_link"
+  ],
+
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationStyle":"custom",
+    "navigationBarTitleText": "海创号",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/activity/activity",
+        "text": "活动",
+        "iconPath": "pages/images/tabBar/haigui.png",
+        "selectedIconPath": "pages/images/tabBar/haigui.png"
+      },
+      {
+        "pagePath": "pages/recruit/recruit",
+        "text": "招聘",
+        "iconPath": "pages/images/tabBar/recruit.png",
+        "selectedIconPath": "pages/images/tabBar/recruit.png"
+      },
+      {
+        "pagePath": "pages/user_center/user_center",
+        "text": "我的",
+        "iconPath": "pages/images/tabBar/user.png",
+        "selectedIconPath": "pages/images/tabBar/user.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

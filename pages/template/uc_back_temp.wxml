@@ -1,0 +1,6 @@
+<!--pages/template/uc_back_temp.wxml-->
+<template name="uc_back_temp">
+<view class="content">
+<!-- <view class="nav_back"></view> -->
+</view>
+</template>

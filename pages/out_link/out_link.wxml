@@ -1,0 +1,3 @@
+<!--pages/out_link/out_link.wxml-->
+<web-view src="{{out_link}}"></web-view>  
+

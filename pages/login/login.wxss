@@ -1,0 +1,78 @@
+/* pages/login/login.wxss */
+@import "../template/common.wxss";
+
+.login_logo{
+  margin-top: 188.7px;
+  margin-left: 111.35px;
+}
+
+.login_logo image{
+  height: 181.9px;
+  width: 130.04999999999998px;
+  display: block;
+}
+
+.text_content{
+  height: 56.1px;
+  margin-top: 43.35px;
+  text-align: center;
+}
+
+.slogin{
+  font-size:21.25px;
+  font-family:PingFangSC-Semibold,PingFang SC;
+  font-weight:600;
+  color:rgba(255,255,255,1);
+  line-height:30.599999999999998px;
+  letter-spacing:12px;
+  text-align: center;
+}
+
+.explain{
+  font-size:12.75px;
+  font-family:PingFangSC-Semibold,PingFang SC;
+  font-weight:600;
+  color:rgba(255,255,255,1);
+  line-height:30.599999999999998px;
+  letter-spacing:8px;
+  text-align: center;
+}
+
+.bottom{
+  width: 189.54999999999998px;
+  height: 1.7px;
+  margin-left: 79.89999999999999px;
+  margin-top: 75.64999999999999px;
+  display: flex;
+}
+
+.line{
+  width: 45.9px;
+  height: 8.5px;
+  border-bottom: 1px rgba(255, 255, 255, 1) solid;
+}
+
+.line_info{
+  width:91.8px;
+  height:17.0px;
+  font-size:11.9px;
+  font-family:PingFangSC-Light,PingFang SC;
+  font-weight:300;
+  color:rgba(255,255,255,1);
+  line-height:17.0px;
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.wechat_icon{
+  margin-top: 35.699999999999996px;
+  margin-left: 158.95px;
+}
+
+.wechat_icon image{
+  height: 34.85px;
+  width: 34.85px;
+  display: block;
+}
+
+

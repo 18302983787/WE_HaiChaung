@@ -1,0 +1,23 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 200rpx 0; */
+  box-sizing: border-box;
+  /* background-color: #f8f8f9; */
+} 
+
+.split_line{
+  height:50rpx;
+  width: 100%;
+  border-top:1rpx rgba(0, 0, 0, 0.425) solid;
+  background-color: #dddee1;
+}
+
+/* @font-face{
+  font-family: "wenyue";
+  src:url("服务器路径")
+} */

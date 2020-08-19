@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<view class="content">
+  <image class="logo" src="../images/login/haichuang_logo.png"></image>
+  <view class="slogin">
+    <text class="text_1">海归必加\n</text>  
+    <text class="text_2">海归青年，创链世界</text>  
+  </view>
+  <view class="login_type">
+    <text>——— 请选择登录方式 ———</text>
+  </view>
+  <image class="we_login" src="../images/login/wechat_icon.png" bindtap="goto_regist"></image>
+</view>

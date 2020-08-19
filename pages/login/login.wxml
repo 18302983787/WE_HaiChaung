@@ -1,0 +1,16 @@
+<!--pages/login/login.wxml-->
+
+<view class="content">
+<view class="login_logo"><image src="../images/login/haichuang_logo.png"></image></view>
+<view class="text_content">
+  <view class="slogin">海归青年，创链世界</view>
+  <!-- <view class="explain">海归青年，创链世界</view> -->
+</view>
+<view class="bottom">
+  <view class="line"></view>
+  <view class="line_info">请选择登录方式</view>
+  <view class="line"></view>
+</view>
+<view class="wechat_icon"><image src="../images/login/wechat_icon.png"></image></view>
+
+</view>

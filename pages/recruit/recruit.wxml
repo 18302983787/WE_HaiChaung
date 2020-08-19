@@ -1,0 +1,35 @@
+<view class="content">
+  <swiper class="advertise_swiper" indicator-dots="{{indicatorDots}}" autoplay="true" interval="3000" vertical="{{isVertical}}" duration="1000" circular='false'>
+    <view class="nav_back_title">海创招聘</view>
+    <swiper-item wx:for="{{imgUrls}}" wx:key="key">
+      <view class="image_z_index"><image src="{{item}}" mode="scaleToFill" /></view>
+    </swiper-item>
+  </swiper>
+  <!-- <view class="info_head">
+  </view> -->
+  <view class="detail">
+    <block wx:for="{{recruits}}" wx:key="key">
+      <view class="recruit_info" bindtap="gotoLink">
+        <view class="pub_time">发布时间 {{item.pub_time}}</view>
+        <view class="like">
+          <image src="../images/template/like2x.png"></image>
+          <text>{{item.likes}}</text>
+        </view>
+        <view class="view">
+          <image src="../images/template//view2x.png"></image>
+          <text>{{item.views}}</text>
+        </view>
+        <view class="title">{{item.recname}}</view>
+        <view class="tags">
+          <view wx:for="{{item.tags}}" wx:key="key" class="tag">{{item}}</view>
+        </view>
+        <view class="text_content">
+          <text>{{item.rec_detail}}</text>
+        </view>
+        <view class="text_bottom">
+          <text>日期：{{item.rec_time}}  |  海创号整理提供</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
