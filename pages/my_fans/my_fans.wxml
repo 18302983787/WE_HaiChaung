@@ -15,7 +15,7 @@
 
       </view>
       <view class="follow_or_not">
-      <text>互相关注</text>
+        <text>互相关注</text>
       </view>
     </view>
         <view class="info">
