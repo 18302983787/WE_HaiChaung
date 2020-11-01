@@ -4,9 +4,9 @@
   <view class="nav_back_title">我的活动</view>
   <view class="info_head"></view>
   <view class="detail">
-    <view class="mn {{isTabA?'type_button_A':'type_button_B'}}" data-tab="1" bindtap="gotoTab"><text>待参加</text></view>
-    <view class="mn {{isTabB?'type_button_A':'type_button_B'}}" data-tab="2" bindtap="gotoTab"><text>已参加</text></view>
-    <view class="activties">
+    <view class="type_button_A"><text>待参加</text></view>
+    <view class="type_button_B"><text>已参加</text></view>
+    <view class="activties">  
       <view class="act" bindtap="goto_detail">
         <view class="act_image"></view>
         <view class="act_name">活动名称</view>

@@ -1,5 +1,4 @@
 <view class="content">
-<!-- 轮播图 -->
 	<swiper class="advertise_swiper" indicator-dots="{{indicatorDots}}" autoplay="true" interval="3000" vertical="{{isVertical}}" duration="1000" circular='false'>
 		<swiper-item wx:for="{{imgUrls}}" wx:key="key">
 			<view class="image_z_index">
@@ -8,45 +7,27 @@
 		</swiper-item>
 	</swiper>
 
-<!-- 活动详情页 -->
 	<view class="detail">
-	<!-- 中部滑动大框 -->
-	<!-- 白色底 -->
 		<view class="module">精彩活动</view>
-
-		<!-- 活动详情 -->
-		<!-- 灰色底 -->
 		<view class="activity" wx:for="{{activities}}" wx:key="key">
 			<view data-item="{{item}}" bindtap="goto_activity">
-			<!-- 活动标题 -->
 			<view class="act_name">{{item.actname}}</view>
-			<!-- 活动详情 -->
-			<!-- 大图 + 时间 + 地址 + 人数 -->
 			<view class="act_info">
-				<!-- 左大图 -->
-				<image class="bigPic" src="../images/activity/ad_1.jpg"></image>
-				<!-- 右大框 -->
-				<view class="rightInfo">
-					<!-- 活动时间 -->
-					<view class="line_time">
-						<image src="../images/template/time2x.png"></image>
-						<text>{{item.act_time}}</text>
-					</view>
-					<!-- 活动地址 -->
-					<view class="line_loc">
-						<image src="../images/template/loc2x.png"></image>
-						<text>{{item.loc}}</text>
-					</view>
-					<!-- 活动人数 -->
-					<view class="line_people">
-						<image src="../images/template/people2x.png"></image>
-						<text>{{item.people}}</text>
-					</view>
+				<image src="../images/activity/ad_1.jpg"></image>
+				<view class="line_time">
+					<image src="../images/template/time2x.png"></image>
+					<text>{{item.act_time}}</text>
+				</view>
+				<view class="line_loc">
+					<image src="../images/template/loc2x.png"></image>
+					<text>{{item.loc}}</text>
+				</view>
+				<view class="line_people">
+					<image src="../images/template/people2x.png"></image>
+					<text>{{item.people}}/{{item.people_limit}}</text>
 				</view>
 			</view>
 			</view>
-
-			<!-- 立即报名按钮 -->
 			<view class="sign_up" data-uid="{{item.uid}}" bindtap="signUp"><text>立即报名</text></view>
 			<!-- <view class="sign_users" wx:for="{{item.signed_users}}" wx:key="key"> -->
 				<!-- <image src="item"></image> -->

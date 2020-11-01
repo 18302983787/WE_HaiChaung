@@ -53,8 +53,8 @@
 }
 
 .we_login{
-  height: 4%;
-  width:9.5%;
+  height: 25.5px;
+  width:25.5px;
   float: left;
   margin-top:20px;
   margin-left: 46%;

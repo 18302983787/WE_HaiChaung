@@ -3,10 +3,6 @@
 @import "../template/common.wxss";
 
 
-.detail{
-  height: 290px;
-}
-
 .info_head{
   height:290px;
   border:1px rgba(255, 255, 255, 0.001) solid;

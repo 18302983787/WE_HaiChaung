@@ -6,9 +6,7 @@ Page({
    */
   data: {
     my_acts:[],
-    user_session:"",
-    isTabA: true,
-    isTabB: false
+    user_session:""
   },
   go_back:function(){
     wx.navigateBack({
@@ -25,7 +23,7 @@ Page({
    */
   onLoad: function (options) {
     this.getUserSession()
-    this.getMyAct()
+
   },
 
   getUserSession:function(){
@@ -45,7 +43,6 @@ Page({
     wx.request({
       url: 'https://haichuanghao.com/api/get_user_infos',
       data:{
-        "table_name":"",
         "user_session":this.data.user_session,
       },
       header:{
@@ -60,21 +57,6 @@ Page({
     })
   },
 
-  gotoTab: function(e) {
-    if (e.currentTarget.dataset.tab === '1') {
-      this.setData({
-        isTabA:true,
-        isTabB:false
-      })
-      // this.getMyAct(1)
-    } else if (e.currentTarget.dataset.tab === '2') {
-      this.setData({
-        isTabA:false,
-        isTabB:true
-      })
-      // this.getMyAct(2)
-    }
-  },
 
 
 

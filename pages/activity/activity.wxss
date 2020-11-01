@@ -18,10 +18,7 @@
   height: 252.45px;
 }
 
-.detail{
-  display: flex;
-  flex-direction: column;
-}
+
 .module{
   margin-top:16.28px;
   margin-left: 30px;
@@ -33,19 +30,17 @@
   line-height:22.2px;
 }
 
-/* 活动框详情样式 */
 .activity{
   margin-top: 14.06px;
   margin-left: 11px;
-  width:95%;
-  height:12rem;
-  background:rgba(0, 0, 0, 0.101);
-  border-radius:20px;
-  box-shadow: 5px 5px 5px gray;
+  width:94%;
+  height:187.22px;
+  background:rgba(71,134,254,0.05);
+  border-radius:16.0px;
 }
 
-/* 活动框title */
 .act_name{
+  float: left;
   margin-top: 14.8px;
   margin-left: 19.55px;
   font-size:16.15px;
@@ -55,67 +50,29 @@
   line-height:19.24px;
 }
 
-/* 活动框内的中间结构 */
-/* 1.活动图片。 */
-/* 2.活动事件。 */
-/* 3.活动地址。 */
-/* 4. 活动人数 */
 .act_info{
+  float: left;
   margin-top: 9px;
-  display: flex;
+  margin-left: 19.55px;
 }
 
-/* 详情栏大图 */
-.act_info .bigPic{
-  width: 10rem;
-  height: 6rem;
-  margin-left: 15px;
-  margin-top: 3px;
-  border-radius: 5px;
-  box-shadow: 3px 3px 3px black;
-}
-
-.rightInfo{
-  margin-top: 6px;
-  margin-left: 10px;
-  /* 调试用色 */
-  /* background-color: rebeccapurple; */
-}
-
-.line_loc{
-  width: 10rem;
-  margin-left: 8px;
-  margin-top: 8px;
-  /* 调试用色 */
-  /* background-color: pink; */
-}
-
-.line_people{
-  width: 10rem;
-  margin-left: 8px;
-  margin-top: 8px;
-  /* 调试用色 */
-  /* background-color: pink; */
+.act_info image{
+  width: 166.5px;
+  height: 88.06px;
+  float: left;
+  margin-left: 5%;
+  margin-top: 2%;
 }
 
 .line_time{
-  /* 调试用色 */
-  /* background-color: pink; */
-  width: 10rem;
-  margin-left: 8px;
+  width: 30%;
+  float: left;
+  margin-left: 4%;
+  margin-top: 15px;
 }
-
-.line_loc text{  
-  margin-left: 4.25px;
-  font-size:11px;
-  font-family:PingFang-SC-Medium,PingFang-SC;
-  font-weight:500;
-  color:rgba(45,47,68,1);
-  line-height:18px;
-}
-
 
 .line_time text{  
+  float: left;
   margin-left: 4.25px;
   font-size:11px;
   font-family:PingFang-SC-Medium,PingFang-SC;
@@ -129,20 +86,42 @@
   width: 14px;
 }
 
-
-
-.line_loc image{
-  height: 0.9rem;
-  width: 0.9rem;
+.line_loc{
+  width: 35%;
+  float: left;
+  margin-left: 4%;
+  margin-top: 15px;
 }
 
-
-.line_people text{  
+.line_loc text{  
+  float: left;
+  margin-left: 4.25px;
   font-size:11px;
-  margin-left: 5px;
   font-family:PingFang-SC-Medium,PingFang-SC;
   font-weight:500;
-  color:rgb(21, 22, 31);
+  color:rgba(45,47,68,1);
+  line-height:18px;
+}
+
+.line_loc image{
+  height: 14px;
+  width: 14px;
+}
+
+.line_people{
+  width: 30%;
+  float: left;
+  margin-left: 4%;
+  margin-top: 15px;
+}
+
+.line_people text{  
+  float: left;
+  margin-left: 4.25px;
+  font-size:11px;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(45,47,68,1);
   line-height:18px;
 }
 
@@ -152,16 +131,17 @@
 }
 
 .sign_up{
-  width:6rem;
-  text-align: center;
-  height:1.2rem;
-  line-height: 1.2rem;
+  width:86.58px;
+  height:24.5px;
   margin-top: 13.32px;
-  margin-left: 20px;
-  background:rgb(65, 125, 236);
-  box-shadow:3px 3px 3px black;
+  margin-left: 19.55px;
+  background:rgba(100,154,255,1);
+  box-shadow:0px 1px 11px 2px rgba(100,154,255,0.48);
   border-radius:4px;
-  /* float: left; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: left;
   z-index: 0;
 }
 

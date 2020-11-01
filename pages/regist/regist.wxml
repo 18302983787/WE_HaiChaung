@@ -1,19 +1,20 @@
 <!--pages/regist/regist.wxml-->
-
 <view class="content">
-  <view class="nav_back" bindtap="go_back"></view>
-  <view class="nav_back_title">我的活动</view>
-  <view class="detail">
+  <view class="head">
+  <view class="head_text">
+    <text>首次登录请完善个人信息
+    (填写真实信息)</text>
+  </view>
+  </view>
   <form class="body" bindsubmit="formSubmit">
     <view class="body_item">
-      <view class="text_a">姓名</view>
+      <text>姓名</text>
       <view class="body_item_input">
-      <input class="body_item_input_text" placeholder-class="body_item_input_placeholder" name="username" placeholder="请输入真实姓名">
-      </input>
+      <input name="username" placeholder="请输入真实姓名"></input>
       </view>
     </view>
     <view class="body_item">
-      <view class="text_a">性别</view>
+      <text>性别</text>
       <view class="body_item_radio">
         <radio-group name="gender">
           <label><radio value="男">男</radio></label>
@@ -22,43 +23,40 @@
       </view>
     </view>
     <view class="body_item">
-      <view class="text_a">年龄</view>
+      <text>年龄</text>
       <view class="body_item_input">
-      <input class="body_item_input_text" placeholder-class="body_item_input_placeholder" name="age" placeholder="18">
-      </input>
+      <input name="age" placeholder="eg:18"></input>
       </view>
     </view>
     <view class="body_item">
-      <view class="text_a">电话</view>
+      <text>电话</text>
       <view class="body_item_input">
-      <input class="body_item_input_text" placeholder-class="body_item_input_placeholder" name="phone" placeholder="请输入11位有效电话">
-      </input>
+      <input name="phone" placeholder="请输入十一位有效电话"></input>
       </view>
     </view> 
     <view class="body_item">
-      <view class="text_a">生日</view>
+      <text>生日</text>
       <view class="body_item_input">
-      <input class="body_item_input_text" placeholder-class="body_item_input_placeholder" name="birth" placeholder="1990-01-01">
-      </input>
+      <input name="birth" placeholder="yyyy-mm-dd eg:1990-01-01"></input>
       </view>
     </view> 
     <view class="body_item">
-      <view class="text_a">毕业院校</view>
+      <text>毕业院校</text>
       <view class="body_item_input">
-      <input class="body_item_input_text" placeholder-class="body_item_input_placeholder" name="graduate" placeholder="最高学历">
-      </input>
+      <input name="graduate" placeholder="最高学历"></input>
       </view>
     </view> 
     <view class="body_item">
-      <view class="text_a">现居地</view>
+      <text>现居地</text>
       <view class="body_item_input">
-      <input class="body_item_input_text" placeholder-class="body_item_input_placeholder" name="loc" placeholder="居住地址">
-      </input>
+      <input name="loc" placeholder="居住地址"></input>
       </view>
     </view>
     <view class="body_item">
       <button type="primary" form-type="submit">注册</button>
     </view>
   </form>
+  <view class="tail">
+    <text>海归青年，创链世界</text>
   </view>
 </view>

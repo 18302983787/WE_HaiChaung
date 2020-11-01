@@ -1,20 +1,18 @@
 {
   "pages": [
-    
-    "pages/activity/activity",
     "pages/index/index",
     "pages/user_center/user_center",
-    "pages/regist/regist",
     "pages/personal_profile/personal_profile",
-    "pages/my_follow/my_follow",
     "pages/details/details",
+    "pages/regist/regist",
+    "pages/activity/activity",
+    "pages/my_follow/my_follow",
     "pages/my_fans/my_fans",
     "pages/recruit/recruit",
     "pages/my_recruit/my_recruit",
     "pages/my_activity/my_activity",
     "pages/logs/logs",
-    "pages/out_link/out_link",
-    "pages/exp/exp"
+    "pages/out_link/out_link"
   ],
 
   "window": {
