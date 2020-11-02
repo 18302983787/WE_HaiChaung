@@ -18,13 +18,10 @@ Page({
   },
 
   onLoad: function () {
-   this.wxlogin();
   },
   
   goto_regist:function(){
-    wx.redirectTo({
-      url: '../regist/regist',
-    })
+    this.wxlogin();
   },
 
   wxlogin: function () {
@@ -55,6 +52,9 @@ Page({
               }
               else{
                 console.log("用户未注册，无法登录")
+                wx.redirectTo({
+                  url: '../regist/regist',
+                })
               }
           },
           })

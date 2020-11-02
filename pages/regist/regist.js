@@ -6,6 +6,12 @@ Page({
    */
   data: {
     user_session:"",
+    sexNames: [
+      { name: '男', value: '0', checked: true },
+      { name: '女', value: '1' }
+    ],
+    formData: {
+    },
   },
 
   /**
@@ -15,6 +21,36 @@ Page({
     this.getUserSession()
   },
 
+  bindDateChange: function (e) {
+    this.setData({
+      date: e.detail.value,
+      [`formData.birth`]: e.detail.value
+    })
+  },
+  formInputChange(e) {
+    const { field } = e.currentTarget.dataset
+    this.setData({
+      [`formData.${field}`]: e.detail.value
+    })
+  },
+  submitForm() {
+    this.selectComponent('#form').validate((valid, errors) => {
+      console.log('valid', valid, errors)
+      if (!valid) {
+        const firstError = Object.keys(errors)
+        if (firstError.length) {
+          this.setData({
+            error: errors[firstError[0]].message
+          })
+
+        }
+      } else {
+        wx.showToast({
+          title: '校验通过'
+        })
+      }
+    })
+  },
   formSubmit:function(e){
     console.log(e)
     var that = this
