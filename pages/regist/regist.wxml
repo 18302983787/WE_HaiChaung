@@ -6,7 +6,45 @@
     (填写真实信息)</text>
   </view>
   </view>
-  <form class="body" bindsubmit="formSubmit">
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+  <view class="page__bd">
+    <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+      <mp-cells title="" footer="">
+          <mp-cell prop="username" title="姓名" ext-class="">
+            <input bindinput="formInputChange" data-field="username" class="weui-input" placeholder="请输入姓名"/>
+          </mp-cell>
+          <mp-cell title="性别" ext-class="weui-cell_vcode">
+             <mp-checkbox-group prop="gender" multi="{{false}}" bindchange="radioChange">
+                <mp-checkbox wx:for="{{sexNames}}" wx:key="value" label="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"></mp-checkbox>
+              </mp-checkbox-group>
+          </mp-cell>
+          <mp-cell prop="age" title="年龄" ext-class="">
+            <input bindinput="formInputChange" data-field="age" class="weui-input" placeholder="请输入姓名"/>
+          </mp-cell>
+          <mp-cell prop="phone" title="电话" ext-class="">
+            <input bindinput="formInputChange" data-field="phone" class="weui-input" placeholder="请输入电话"/>
+          </mp-cell>
+          <mp-cell prop="birth" title="生日" ext-class="">
+              <picker data-field="birth" mode="date" value="{{date}}" start="1900-01-01" end="2020-01-01" bindchange="bindDateChange">
+                  <view class="weui-input">{{date}}</view>
+              </picker>
+          </mp-cell>
+          <mp-cell prop="graduate" title="毕业院校/专业" ext-class="">
+            <input bindinput="formInputChange" data-field="graduate" class="weui-input" placeholder="请输入院校"/>
+          </mp-cell>
+          <mp-cell prop="loc" title="现居地" ext-class="">
+            <input bindinput="formInputChange" data-field="loc" class="weui-input" placeholder="请输入现居地"/>
+          </mp-cell>
+      </mp-cells>
+    </mp-form>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+    </view>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="gotoDirect">跳过注册</button>
+    </view>
+  </view>
+  <!-- <form class="body" bindsubmit="formSubmit">
     <view class="body_item">
       <text>姓名</text>
       <view class="body_item_input">
@@ -55,7 +93,7 @@
     <view class="body_item">
       <button type="primary" form-type="submit">注册</button>
     </view>
-  </form>
+  </form> -->
   <view class="tail">
     <text>海归青年，创链世界</text>
   </view>

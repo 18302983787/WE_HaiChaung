@@ -40,6 +40,16 @@ Page({
       url: '../my_recruit/my_recruit',
     })
   },
+  goto_identificate:function(){
+    wx.navigateTo({
+      url: '../my_identificate/my_identificate',
+    })
+  },
+  goto_config:function(){
+    wx.navigateTo({
+      url: '../my_config/my_config',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

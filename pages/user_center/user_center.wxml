@@ -6,19 +6,19 @@
     </view>
     <!-- 当前只做展示，后台数据交互逻辑实现中，接口已完成 -->
     <!-- <view class="follows" bindtap="goto_follow"> -->
-    <view class="follows">
+    <view class="follows" bindtap="goto_follow">
       <text class="t_wenyue">0</text>
       <text class="t_normal">关注</text>
     </view>
     <!-- 当前只做展示，后台数据交互逻辑实现中，接口已完成 -->
     <!-- <view class="fans" bindtap="goto_fans"> -->
-    <view class="fans">
+    <view class="fans" bindtap="goto_fans">
       <text class="t_wenyue">0</text>
       <text class="t_normal">粉丝</text>
     </view>
     <!-- 当前只做展示，后台数据交互逻辑实现中，接口已完成 -->
     <!-- <view class="points" bindtap="goto_points"> -->
-    <view class="points">
+    <view class="points" bindtap="goto_points">
       <text class="t_wenyue">0</text>
       <text class="t_normal">积分</text>
     </view>
@@ -39,14 +39,14 @@
       <image></image>
       <text>我的招聘</text>
     </view>
-    <view class="extra_func">
+    <view class="extra_func" bindtap="goto_identificate">
       <image class="func_icon" src="../images/user_center/renzheng.png"></image>
       <text class="func_name">认证中心</text>
       <text class="func_desc_1">真实信息认证</text>
       <view class="more"></view>
     </view>
     
-    <view class="extra_func">
+    <view class="extra_func" bindtap="goto_config">
       <image class="func_icon" src="../images/user_center/config.png"></image>
       <text class="func_name">设置</text>
       <text class="func_desc_2">账户、个人信息、通知</text>

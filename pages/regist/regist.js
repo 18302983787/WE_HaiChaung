@@ -6,6 +6,31 @@ Page({
    */
   data: {
     user_session:"",
+    sexNames: [
+      { name: '男', value: '男', checked: true },
+      { name: '女', value: '女' }
+    ],
+    formData: {
+    },
+    rules: [{
+      name: 'username',
+      rules: [{ required: true, message: '请填写姓名' }, { maxlength: 5, message: '姓名长度不超过五个字' }],
+    }, {
+      name: 'age',
+      rules: [{ required: true, message: '请填写年龄' },{ max: 200, message: '年龄必须是数字' }],
+    }, {
+      name: 'phone',
+      rules: [{ required: true, message: '请填写手机号' }, { mobile: true, message: '手机号格式不对' }],
+    }, {
+      name: 'birth',
+      rules: { required: true, message: '请填写生日' },
+    }, {
+      name: 'graduate',
+      rules: { required: true, message: '请填写毕业院校' },
+    }, {
+        name: 'loc',
+      rules: { required: true, message: '请填写现居地' },
+    }]
   },
 
   /**
@@ -13,18 +38,65 @@ Page({
    */
   onLoad: function (options) {
     this.getUserSession()
+    // 初始化赋值
+    this.data.formData.radio = '男'
   },
 
+  radioChange: function (e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value);
+
+    var radioItems = this.data.sexNames;
+    for (var i = 0, len = radioItems.length; i < len; ++i) {
+      radioItems[i].checked = radioItems[i].value == e.detail.value;
+    }
+
+    this.setData({
+      radioItems: radioItems,
+      [`formData.radio`]: e.detail.value
+    });
+  },
+  bindDateChange: function (e) {
+    this.setData({
+      date: e.detail.value,
+      [`formData.birth`]: e.detail.value
+    })
+  },
+  formInputChange(e) {
+    const { field } = e.currentTarget.dataset
+    this.setData({
+      [`formData.${field}`]: e.detail.value
+    })
+  },
+  submitForm() {
+    this.selectComponent('#form').validate((valid, errors) => {
+      console.log('valid', valid, errors)
+      if (!valid) {
+        const firstError = Object.keys(errors)
+        if (firstError.length) {
+          this.setData({
+            error: errors[firstError[0]].message
+          })
+        }
+      } else {
+        // wx.showToast({
+        //   title: '校验通过'
+        // })
+        this.formSubmit()
+      }
+    })
+  },
   formSubmit:function(e){
     console.log(e)
+    console.log(this.data.formData)
     var that = this
-    var username = e.detail.value.username
-    var gender = e.detail.value.gender
-    var age = e.detail.value.age
-    var phone = e.detail.value.phone
-    var birth = e.detail.value.birth
-    var graduate = e.detail.value.graduate
-    var loc = e.detail.value.loc
+    var username = this.data.formData.username
+    console.log(username)
+    var gender = this.data.formData.radio
+    var age = this.data.formData.age
+    var phone = this.data.formData.phone
+    var birth = this.data.formData.birth
+    var graduate = this.data.formData.graduate
+    var loc = this.data.formData.loc
     wx.request({
       url: 'https://haichuanghao.com/api/register',
       method:"POST",
@@ -44,6 +116,9 @@ Page({
       },
       success(res){
         if (res.data.response=="success"){
+          wx.showToast({
+            title: '注册成功'
+          })
           wx.switchTab({
             url: '../activity/activity',
           })
@@ -54,7 +129,11 @@ Page({
         }
     })
   },
-
+  gotoDirect:function(){
+    wx.switchTab({
+      url: '../activity/activity',
+    })
+  },
   getUserSession:function(){
     var that = this
     wx.getStorage({
