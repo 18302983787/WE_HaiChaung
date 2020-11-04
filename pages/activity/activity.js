@@ -88,13 +88,30 @@ Page({
         if (res.data.response=="success"){
           wx.showToast({
             title: '报名成功',
-            icon: '',    //如果要纯文本，不要icon，将值设为'none'
+            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
             duration: 2000     
           })
-        }   
-        else{
+        } else if (res.data.response=="singed"){
           wx.showToast({
             title: '已经报名过啦',
+            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+            duration: 2000     
+          })
+        } else if (res.data.response=="full"){
+          wx.showToast({
+            title: '报名人数已满',
+            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+            duration: 2000     
+          })
+        } else if (res.data.response=="error"){
+          wx.showToast({
+            title: '报名失败，请稍后重试',
+            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+            duration: 2000     
+          })
+        } else{
+          wx.showToast({
+            title: '未知错误，请联系相关技术人员',
             icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
             duration: 2000     
           })

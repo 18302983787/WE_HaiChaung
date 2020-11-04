@@ -44,7 +44,7 @@ Page({
                 user_session:res.data.user_session,
               })
               wx.setStorageSync('user_session', that.data.user_session)
-              if (res.data.is_regist){
+              if (res.data.status === 'success'){
               console.log("登录成功")
               wx.switchTab({
                 url: '../activity/activity',

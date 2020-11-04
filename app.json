@@ -12,12 +12,14 @@
     "pages/my_recruit/my_recruit",
     "pages/my_activity/my_activity",
     "pages/logs/logs",
-    "pages/out_link/out_link"
+    "pages/out_link/out_link",
+    "pages/my_identificate",
+    "pages/my_identificate/my_identificate",
+    "pages/my_config/my_config"
   ],
-
   "window": {
     "backgroundTextStyle": "light",
-    "navigationStyle":"custom",
+    "navigationStyle": "custom",
     "navigationBarTitleText": "海创号",
     "navigationBarTextStyle": "black"
   },

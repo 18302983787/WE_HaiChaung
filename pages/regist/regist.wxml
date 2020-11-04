@@ -6,6 +6,7 @@
     (填写真实信息)</text>
   </view>
   </view>
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
   <view class="page__bd">
     <mp-form id="form" rules="{{rules}}" models="{{formData}}">
       <mp-cells title="" footer="">
@@ -38,6 +39,9 @@
     </mp-form>
     <view class="weui-btn-area">
         <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+    </view>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="gotoDirect">跳过注册</button>
     </view>
   </view>
   <!-- <form class="body" bindsubmit="formSubmit">
