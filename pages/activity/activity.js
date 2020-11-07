@@ -131,7 +131,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.checkSession({
+      success: function () {
+        //session_key 未过期，并且在本生命周期一直有效
+        return ;
+      },
+      fail: function () {
+        // session_key 已经失效，需要重新执行登录流程
+        wx.navigateTo({
+          url: '../index/index'
+        })
+      }
+    })
   },
 
   /**
