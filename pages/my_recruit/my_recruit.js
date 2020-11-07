@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isTabA: true,
+    isTabB: false
   },
   go_back:function(){
     wx.navigateBack({
@@ -13,11 +14,25 @@ Page({
     })
   },
 
+  gotoTab: function(e) {
+    if (e.currentTarget.dataset.tab === "1") {
+      this.setData({
+        isTabA: true,
+        isTabB: false
+      })
+    } else if (e.currentTarget.dataset.tab === "2") {
+      this.setData({
+        isTabA: false,
+        isTabB: true
+      })
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getMyAct()
   },
 
   /**
