@@ -1,4 +1,5 @@
 // pages/my_activity/my_activity.js
+var app = getApp()
 Page({
 
   /**
@@ -41,12 +42,12 @@ Page({
   },
 
   getMyAct: function(){
+    console.log(app.globalData.user_session)
     var that = this
     wx.request({
-      url: 'https://haichuanghao.com/api/get_user_infos',
+      url: 'https://haichuanghao.com/api/get_my_activity',
       data:{
-        "table_name": "",
-        "user_session":this.data.user_session,
+        "user_session":app.globalData.user_session,
       },
       header:{
         'content-type': 'application/x-www-form-urlencoded' // 默认值
