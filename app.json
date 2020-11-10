@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/regist/regist",
     "pages/user_center/user_center",
     "pages/personal_profile/personal_profile",
     "pages/details/details",
-    "pages/regist/regist",
     "pages/activity/activity",
     "pages/my_follow/my_follow",
     "pages/my_fans/my_fans",
@@ -13,7 +13,6 @@
     "pages/my_activity/my_activity",
     "pages/logs/logs",
     "pages/out_link/out_link",
-    "pages/my_identificate",
     "pages/my_identificate/my_identificate",
     "pages/my_config/my_config"
   ],

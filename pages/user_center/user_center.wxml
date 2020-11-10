@@ -32,11 +32,11 @@
   </view>
   <view class="detail">
     <view class="my_act" bindtap="goto_act">
-      <image></image>
+      <image src="../images/user_center/activity.png"></image>
       <text>我的活动</text>
     </view>
     <view class="my_job" bindtap="goto_recruit">
-      <image></image>
+      <image src="../images/user_center/job.png"></image>
       <text>我的招聘</text>
     </view>
     <view class="extra_func" bindtap="goto_identificate">

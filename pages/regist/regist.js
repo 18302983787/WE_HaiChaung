@@ -7,8 +7,8 @@ Page({
   data: {
     user_session:"",
     sexNames: [
-      { name: '男', value: '男', checked: true },
-      { name: '女', value: '女' }
+      { name: '女', value: '女' },
+      { name: '男', value: '男', checked: true }
     ],
     formData: {
     },
@@ -86,11 +86,11 @@ Page({
     })
   },
   formSubmit:function(e){
-    console.log(e)
-    console.log(this.data.formData)
+    // console.log(e)
+    // console.log(this.data.formData)
     var that = this
     var username = this.data.formData.username
-    console.log(username)
+    // console.log(username)
     var gender = this.data.formData.radio
     var age = this.data.formData.age
     var phone = this.data.formData.phone

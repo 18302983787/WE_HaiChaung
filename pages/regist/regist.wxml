@@ -1,48 +1,54 @@
 <!--pages/regist/regist.wxml-->
 <view class="content">
-  <view class="head">
+  <view class="nav_back" bindtap="go_back"></view>
+  <view class="nav_back_title">完善信息</view>
+  <view class="info_head"></view>
+  <!-- <view class="head">
   <view class="head_text">
     <text>首次登录请完善个人信息
     (填写真实信息)</text>
   </view>
-  </view>
+  </view> -->
   <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
-  <view class="page__bd">
-    <mp-form id="form" rules="{{rules}}" models="{{formData}}">
-      <mp-cells title="" footer="">
-          <mp-cell prop="username" title="姓名" ext-class="">
-            <input bindinput="formInputChange" data-field="username" class="weui-input" placeholder="请输入姓名"/>
+  <view class="page__bd detail">
+    <mp-form id="form" ext-class="register-form" rules="{{rules}}" models="{{formData}}">
+      <mp-cells ext-class="register-cells" title="" footer="">
+          <mp-cell prop="username" title="姓名" ext-class="register-cell">
+            <input bindinput="formInputChange" data-field="username" class="register-input" placeholder-class="register-placehoder" placeholder="请输入姓名"/>
           </mp-cell>
-          <mp-cell title="性别" ext-class="weui-cell_vcode">
+          <mp-cell title="性别" ext-class="register-cell">
              <mp-checkbox-group prop="gender" multi="{{false}}" bindchange="radioChange">
-                <mp-checkbox wx:for="{{sexNames}}" wx:key="value" label="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"></mp-checkbox>
+                <mp-checkbox wx:for="{{sexNames}}" ext-class="register-checkbox" wx:key="value" label="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"></mp-checkbox>
               </mp-checkbox-group>
           </mp-cell>
-          <mp-cell prop="age" title="年龄" ext-class="">
-            <input bindinput="formInputChange" data-field="age" class="weui-input" placeholder="请输入姓名"/>
+          <mp-cell prop="age" title="年龄" ext-class="register-cell">
+            <input bindinput="formInputChange" data-field="age" class="register-input" placeholder-class="register-placehoder" placeholder="请输入姓名"/>
           </mp-cell>
-          <mp-cell prop="phone" title="电话" ext-class="">
-            <input bindinput="formInputChange" data-field="phone" class="weui-input" placeholder="请输入电话"/>
+          <mp-cell prop="phone" title="电话" ext-class="register-cell">
+            <input bindinput="formInputChange" data-field="phone" class="register-input" placeholder-class="register-placehoder" placeholder="请输入电话"/>
           </mp-cell>
-          <mp-cell prop="birth" title="生日" ext-class="">
+          <mp-cell prop="birth" title="生日" ext-class="register-cell">
               <picker data-field="birth" mode="date" value="{{date}}" start="1900-01-01" end="2020-01-01" bindchange="bindDateChange">
-                  <view class="weui-input">{{date}}</view>
+                  <view class="register-input">{{date}}</view>
               </picker>
           </mp-cell>
-          <mp-cell prop="graduate" title="毕业院校/专业" ext-class="">
-            <input bindinput="formInputChange" data-field="graduate" class="weui-input" placeholder="请输入院校"/>
+          <mp-cell prop="graduate" title="毕业院校/专业" ext-class="register-cell">
+            <input bindinput="formInputChange" data-field="graduate" class="register-input" placeholder-class="register-placehoder" placeholder="请输入院校"/>
           </mp-cell>
-          <mp-cell prop="loc" title="现居地" ext-class="">
-            <input bindinput="formInputChange" data-field="loc" class="weui-input" placeholder="请输入现居地"/>
+          <mp-cell prop="loc" title="现居地" ext-class="register-cell">
+            <input bindinput="formInputChange" data-field="loc" class="register-input" placeholder-class="register-placehoder" placeholder="请输入现居地"/>
           </mp-cell>
       </mp-cells>
     </mp-form>
-    <view class="weui-btn-area">
-        <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+    <view>
+      <div class="register-btn">
+        注册
+      </div>
+      <!-- <button class="weui-btn" type="primary" bindtap="submitForm">确定</button> -->
     </view>
-    <view class="weui-btn-area">
+    <!-- <view class="weui-btn-area">
         <button class="weui-btn" type="primary" bindtap="gotoDirect">跳过注册</button>
-    </view>
+    </view> -->
   </view>
   <!-- <form class="body" bindsubmit="formSubmit">
     <view class="body_item">
@@ -94,7 +100,7 @@
       <button type="primary" form-type="submit">注册</button>
     </view>
   </form> -->
-  <view class="tail">
+  <!-- <view class="tail">
     <text>海归青年，创链世界</text>
-  </view>
+  </view> -->
 </view>
