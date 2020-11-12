@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/my_integral/my_integral",
     "pages/index/index",
     "pages/regist/regist",
     "pages/user_center/user_center",
@@ -15,6 +16,7 @@
     "pages/out_link/out_link",
     "pages/my_identificate/my_identificate",
     "pages/my_config/my_config"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,24 +25,29 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "color": "#ADC9FE",
+    "opacity": 0.4,
+    "backgroundColor": "#558FFD",
+    "borderStyle": "white",
+    "selectedColor": "#FFF",
     "list": [
       {
         "pagePath": "pages/activity/activity",
         "text": "活动",
-        "iconPath": "pages/images/tabBar/haigui.png",
-        "selectedIconPath": "pages/images/tabBar/haigui.png"
+        "iconPath": "pages/images/tabBar/activity_n.png",
+        "selectedIconPath": "pages/images/tabBar/activity.png"
       },
       {
         "pagePath": "pages/recruit/recruit",
         "text": "招聘",
-        "iconPath": "pages/images/tabBar/recruit.png",
-        "selectedIconPath": "pages/images/tabBar/recruit.png"
+        "iconPath": "pages/images/tabBar/job_n.png",
+        "selectedIconPath": "pages/images/tabBar/job.png"
       },
       {
         "pagePath": "pages/user_center/user_center",
         "text": "我的",
-        "iconPath": "pages/images/tabBar/user.png",
-        "selectedIconPath": "pages/images/tabBar/user.png"
+        "iconPath": "pages/images/tabBar/me_n.png",
+        "selectedIconPath": "pages/images/tabBar/me.png"
       }
     ]
   },
