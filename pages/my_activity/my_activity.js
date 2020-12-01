@@ -42,12 +42,14 @@ Page({
   },
 
   getMyAct: function(){
-    console.log(app.globalData.user_session)
     var that = this
     wx.request({
       url: 'https://haichuanghao.com/api/get_my_activity',
       data:{
-        "user_session":app.globalData.user_session,
+        // fixme 刷新之后globaldata消失？
+        // "user_session":app.globalData.user_session,
+        "user_session": "090e54a81a91aa89172202a90c1f2ba6", 
+        "get_type":"ongoing",
       },
       header:{
         'content-type': 'application/x-www-form-urlencoded' // 默认值
@@ -57,20 +59,46 @@ Page({
         that.setData({
           my_acts:res.data
         })
+        console.log("res",res.data)
+      }
+    })
+  },
+
+  getHisoryAct: function(){
+    var that = this
+    wx.request({
+      url: 'https://haichuanghao.com/api/get_my_activity',
+      data:{
+        // fixme 刷新之后globaldata消失？
+        // "user_session":app.globalData.user_session,
+        "user_session": "090e54a81a91aa89172202a90c1f2ba6", 
+        "get_type":"expired",
+      },
+      header:{
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method:"POST",
+      success(res){
+        that.setData({
+          my_acts:res.data
+        })
+        console.log("res",res.data)
       }
     })
   },
 
   gotoTab: function(e) {
     if (e.currentTarget.dataset.tab === "1") {
+      this.getMyAct()
       this.setData({
         isTabA: true,
-        isTabB: false
+        isTabB: false,
       })
     } else if (e.currentTarget.dataset.tab === "2") {
+      this.getHisoryAct(),
       this.setData({
         isTabA: false,
-        isTabB: true
+        isTabB: true,
       })
     }
   },

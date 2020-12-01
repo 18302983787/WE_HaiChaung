@@ -74,9 +74,9 @@
 }
 
 .act_image{
-  width:69.7px;
-  height:69.7px;
-  border-radius:9.600000000000001px;
+  width:70px;
+  height:70px;
+  border-radius:9.6px;
   border: 1px red solid;
   float: left;
 }
@@ -84,7 +84,7 @@
 .act_name{
   width:149.6px;
   height:25.5px;
-  font-size:18.7px;
+  font-size:10px;
   font-family:PingFangSC-Semibold,PingFang SC;
   font-weight:600;
   color:rgba(45,47,68,1);
@@ -97,7 +97,7 @@
 .comments{
   width:95.2px;
   height:18.7px;
-  font-size:13.6px;
+  font-size:9px;
   font-family:PingFang-SC-Regular,PingFang-SC;
   font-weight:400;
   color:rgba(45,47,68,0.63);
