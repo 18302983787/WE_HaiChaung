@@ -1,6 +1,5 @@
 // pages/personal_profile/personal_profile.js
 var app = getApp()
-
 Page({
  data:{
    user_info:"",

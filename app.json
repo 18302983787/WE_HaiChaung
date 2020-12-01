@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/user_center/user_center",
+    "pages/activity/activity",
     "pages/my_integral/my_integral",
     "pages/index/index",
     "pages/regist/regist",
-    "pages/user_center/user_center",
     "pages/personal_profile/personal_profile",
     "pages/details/details",
-    "pages/activity/activity",
     "pages/my_follow/my_follow",
     "pages/my_fans/my_fans",
     "pages/recruit/recruit",
