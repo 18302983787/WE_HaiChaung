@@ -10,6 +10,7 @@
 #=============================================================================
 """
 from utils.common_utils import date_2_string,get_relation
+from utils.filelog import logger
 
 
 def reformat_my_activity(res):
@@ -49,7 +50,7 @@ def reformat_my_activity(res):
         for k, v in zip(["id", "uid", "actname", "act_time", "act_detail", "posters"], list(line)):
             if k == "act_time":
                 v = date_2_string(v)
-            tmp_dict[k] = v
+            tmp_dict[k] = str(v)
         res_list.append(tmp_dict)
     return res_list
 

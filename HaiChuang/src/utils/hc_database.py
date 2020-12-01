@@ -120,6 +120,7 @@ class HCDataBase:
 
     def _execute_sql(self, sql, insert=False):
         # 执行sql语句
+        logger.info(f"【sql】:{sql}")
         cursor = self.conn.cursor()
         try:
             cursor.execute(sql)

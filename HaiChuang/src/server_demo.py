@@ -12,13 +12,12 @@ from utils.filelog import logger
 from utils import constants
 from utils.reformat import *
 
-
 app = Flask(__name__)
 
 
 @app.route('/')
 def haichuang_web():
-    return render_template("haichuang_web.html")
+    return render_template("template/haichuang_web.html")
 
 
 # 登录
@@ -75,19 +74,25 @@ def get_my_activity():
     """
     user_session = request.values.get("user_session")
     get_type = request.values.get("get_type")
+    logger.info(f"【api-get_my_activity】user_session:{user_session}\tget_type:{get_type}")
     conn = HCDataBase("HaiChuang")
     reformat_res = []
     try:
         res = conn.execute_sql_return_res(sqls.GET_USER_ACTIVITY.format(user_session=user_session,
-                                                                        compare=constants.LARGER if get_type == constants.EXPIRED else constants.SMALLER,
+                                                                        compare=constants.SMALLER if get_type == constants.EXPIRED else constants.LARGER,
                                                                         today=date_2_string(datetime.now())))
         reformat_res = reformat_my_activity(res)
+        if not reformat_res:
+            logger.warning(f"用户{user_session}没有待参加的活动哦!")
+        else:
+            logger.info(f"用户{user_session} {get_type}的活动是{reformat_res}")
         status = "success"
     except Exception as e:
         logger.error(e)
         status = "error"
     return {"status": status,
-            "data": reformat_res}
+            "data": reformat_res,
+            "length": len(reformat_res)}
 
 
 # 报名
@@ -159,7 +164,7 @@ def register():
 
 
 # 请求我的粉丝信息
-@app.route("/api/get_my_relation")
+@app.route("/api/get_my_relation", methods=["POST"])
 def get_my_relation():
     """
     【请求】获取我的粉丝
