@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def haichuang_web():
-    return render_template("template/haichuang_web.html")
+    return render_template("../templates/haichuang_web.html")
 
 
 # 登录
@@ -179,18 +179,18 @@ def get_my_relation():
      }
     """
     user_session = request.values.get("user_session")
-    type = request.values.get("type").strip()
+    type_ = request.values.get("type").strip()
     conn = HCDataBase("HaiChuang")
     reformat_res = []
     try:
-        if type == "fans":
-            res = conn.execute_sql_return_res(sqls.GET_USER_FANS.format(user_session))
+        if type_ == "fans":
+            res = conn.execute_sql_return_res(sqls.GET_USER_FANS.format(user_session=user_session))
         else:
-            res = conn.execute_sql_return_res(sqls.GET_USER_LIKE.format(user_session))
-        reformat_res = reformat_my_relation(res)
+            res = conn.execute_sql_return_res(sqls.GET_USER_LIKE.format(user_session=user_session))
+        reformat_res = reformat_my_relation(res, conn)
         status = "success"
     except Exception as e:
-        logger.error(e)
+        logger.exception(e)
         status = "error"
     return {"status": status,
             "data": reformat_res}

@@ -101,6 +101,7 @@ class HCDataBase:
         :return boolean:
         """
         res = self._execute_sql(sql)
+        logger.info(f"res:{res}")
         if res == "success":
             logger.info("【success】sql:{}".format(sql))
         return res

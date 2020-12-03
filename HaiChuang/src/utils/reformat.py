@@ -9,7 +9,7 @@
 #      History:
 #=============================================================================
 """
-from utils.common_utils import date_2_string,get_relation
+from utils.common_utils import date_2_string, get_relation
 from utils.filelog import logger
 
 
@@ -55,7 +55,7 @@ def reformat_my_activity(res):
     return res_list
 
 
-def reformat_my_relation(res):
+def reformat_my_relation(res, conn):
     """
     解析我的粉丝的返回值
     :param tuple res:
@@ -73,15 +73,18 @@ def reformat_my_relation(res):
     """
     res_list = []
     # 将每一行数据生成的字典添加进列表
+    if not res:
+        return res_list
     for line in res:
         # 用于存储用户信息字典
         tmp_dict = {}
         # usr_id, fans_id 组成ids 用来查找关系； infos用来拼接数据
-        ids, infos = list(line)[:2],list(line)[2:]
+        ids, infos = list(line)[:2], list(line)[2:]
         # 先把每一行的数据拼接成字典
-        for k, v in zip(["uid", "name", "head_image", "user_session"], infos):
+        for k, v in zip(["name", "head_image", "user_session"], infos):
+            logger.info(f"{k},{v}")
             tmp_dict[k] = v
         # 查找用户与粉丝的关系
-        tmp_dict["relation"] = get_relation(ids)
+        tmp_dict["relation"] = get_relation(ids, conn,)
         res_list.append(tmp_dict)
     return res_list

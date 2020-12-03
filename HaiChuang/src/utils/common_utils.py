@@ -9,10 +9,10 @@
 #      History:
 #=============================================================================
 """
-from utils import sqls
-from utils.hc_database import *
+
 from datetime import datetime
 
+from utils import sqls
 
 def id_format(_id):
     """
@@ -63,7 +63,7 @@ def date_2_string(date):
     return date
 
 
-def get_relation(ids):
+def get_relation(ids, conn):
     """
     获取两个用户的关系（单向关注，双向关注）
     :param list ids: id_a, id_b
@@ -72,13 +72,12 @@ def get_relation(ids):
         1 表示互相关注
     """
     id_a, id_b = ids
-    conn = HCDataBase("HaiChuang")
     a = conn.execute_sql_return_res(sqls.GET_RELATION.format(id_a=id_a, id_b=id_b))
     b = conn.execute_sql_return_res(sqls.GET_RELATION.format(id_a=id_b, id_b=id_a))
     a = a[0][0] if a else 0
     b = b[0][0] if b else 0
     # TODO 此处可以增加用户ab的具体关系
-    if a == 1 and b ==1:
+    if a == 1 and b == 1:
         return 1
     else:
         return 0
