@@ -5,36 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // banner
-    imgUrls: [
-      '../images/activity/demo_1.jpg',
-      '../images/activity/demo_2.jpg',
-      '../images/activity/demo_3.jpg',
-    ],
-    indicatorDots: true, //是否显示面板指示点
-    // autoplay: true, //是否自动切换
-    // interval: 3000, //自动切换时间间隔,3s
-    // duration: 1000, //  滑动动画时长1s
-    jobs:{},
     user_session:"",
-    is_signed:"",
+    my_fans:[],
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getActData();
-    this.getUserSession(); 
-  },
-  getActData:function(){
+    this.getUserSession();
+    this.getMyFans();
+   },
+
+  getUserSession:function(){
     var that = this;
-    console.log(this.data.user_session)
+    wx.getStorage({
+      key: 'user_session',
+      success(e){
+        that.setData({
+          "user_session":e.data
+        })
+      }
+    })
+  },
+  //获取用户所有的粉丝
+  getMyFans:function(){
+    var that = this;
+    // console.log("current user session:");
+    // console.log(app.globalData.user_session);
     wx.request({
       url: 'https://haichuanghao.com/api/get_my_relation',
       data:{
-        // "table":"hc_activity"
         "type":"fans",
-        "user_session":this.data.user_session,
+        "user_session":"test_user_session_tony",
       },
       header:{
         // 'content-type': 'application/json' // 默认值
@@ -42,24 +44,14 @@ Page({
       },
       method:"POST",
       success(res){
+        console.log(res.data)
         that.setData({
-          jobs:res.data
+          "my_fans":res.data
         })
       }
     })
   },
-  getUserSession:function(){
-    var that = this
-    wx.getStorage({
-      key: 'user_session',
-      success(e){
-        console.log(e.data)
-        that.setData({
-          user_session:e.data
-        })
-      }
-    })
-  },
+ 
   go_back:function(){
     wx.navigateBack({
       delta: 0,

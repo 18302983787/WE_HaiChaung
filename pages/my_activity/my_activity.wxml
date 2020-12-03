@@ -5,7 +5,7 @@
   <view class="info_head"></view>
   <view class="detail">
     <view class="mn {{isTabA?'type_button_A':'type_button_B'}}" data-tab="1" bindtap="gotoTab"><text>待参加</text></view>
-    <view class="mn {{isTabB?'type_button_A':'type_button_B'}}" data-tab="2" bindtap="gotoTab"><text>已参加</text></view>
+    <view class="mn {{isTabB?'type_button_A':'type_button_B'}}" data-tab="2" bindtap="gotoTab"><text>已过期</text></view>
     <view class="activties">
       <view wx:if="{{my_acts.length==0}}">
         <text>没有未参加的活动！</text>
