@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    my_recs:[],
+    user_session:"",
     isTabA: true,
     isTabB: false
   },

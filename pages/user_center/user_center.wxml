@@ -7,19 +7,19 @@
     <!-- 当前只做展示，后台数据交互逻辑实现中，接口已完成 -->
     <!-- <view class="follows" bindtap="goto_follow"> -->
     <view class="follows" bindtap="goto_follow">
-      <text class="t_wenyue">0</text>
+      <text class="t_wenyue">{{user_info.follow_num}}</text>
       <text class="t_normal">关注</text>
     </view>
     <!-- 当前只做展示，后台数据交互逻辑实现中，接口已完成 -->
     <!-- <view class="fans" bindtap="goto_fans"> -->
     <view class="fans" bindtap="goto_fans">
-      <text class="t_wenyue">0</text>
+      <text class="t_wenyue">{{user_info.fans_num}}</text>
       <text class="t_normal">粉丝</text>
     </view>
     <!-- 当前只做展示，后台数据交互逻辑实现中，接口已完成 -->
     <!-- <view class="points" bindtap="goto_points"> -->
     <view class="points" bindtap="goto_points">
-      <text class="t_wenyue">0</text>
+      <text class="t_wenyue">{{user_info.score}}</text>
       <text class="t_normal">积分</text>
     </view>
     <view class="user">

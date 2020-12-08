@@ -43,8 +43,6 @@ Page({
 
   signUp:function(e){
     var that = this
-    console.log("aaa")
-    console.log(that.act_detail)
     wx.request({
       url: 'https://haichuanghao.com/api/sign_up',
       data:{
