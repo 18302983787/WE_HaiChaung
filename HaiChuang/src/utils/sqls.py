@@ -10,6 +10,11 @@
 #=============================================================================
 """
 
+# 查询用户中心页面
+GET_USER_CENTER = """select username, head_image, user_session, score from hc_user where user_session="{user_session}";"""
+GET_USER_FANS_NUM = """select count(id) from hc_fans where user_session="{user_session}";"""
+GET_USER_FOLLOW_NUM = """select count(id) from hc_fans where fans_session="{user_session}";"""
+
 # 查询用户报名/参加过的活动
 GET_USER_ACTIVITY = """select id, uid, actname, act_time, act_detail, posters from (hc_activity as a inner join 
 (select  act_id, usr_session from hc_activity_sign where usr_session="{user_session}") as b on 
@@ -29,7 +34,6 @@ fans_session="{user_session}") as a inner join hc_user as b on a.user_session=b.
 
 # 查询用户ab是否互相关注
 GET_RELATION = """SELECT 1 from hc_fans where usr_id = '{id_a}' and fans_id = '{id_b}';"""
-
 
 # 查询用户是否存在在用户表中
 USER_SIGN_UP = """select uid, username, user_session from hc_user where user_session="{}";"""

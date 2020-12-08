@@ -21,5 +21,6 @@ EQUAL = "="
 EXPIRED = "expired"
 EMPTY = "empty"
 
+UNDEFINED = "undefined"
 
 # ========================================================================"""

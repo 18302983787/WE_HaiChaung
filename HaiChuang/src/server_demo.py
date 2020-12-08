@@ -52,7 +52,7 @@ def login():
     return json.dumps(user_info)
 
 
-# 请求数据
+# 请求数据 先暂用与活动招聘页面
 @app.route("/api/request_info", methods=['POST'])
 def get_info():
     table_name = request.values.get("table")
@@ -63,6 +63,28 @@ def get_info():
     else:
         res = conn.select(table_name)
     return res
+
+
+# 请求个人信息
+@app.route("/api/get_user_info", methods=['POST'])
+def get_user_info():
+    user_session = request.values.get("user_session")
+    conn = HCDataBase()
+    format_res = {"status": "error", "data": dict()}
+    if user_session:
+        user_info = conn.execute_sql_return_res(sqls.GET_USER_CENTER.format(user_session=user_session))
+        fans_num = conn.execute_sql_return_res(sqls.GET_USER_FANS_NUM.format(user_session=user_session))
+        follow_num = conn.execute_sql_return_res(sqls.GET_USER_FOLLOW_NUM.format(user_session=user_session))
+    else:
+        user_info = conn.execute_sql_return_res(sqls.GET_USER_CENTER.format(constants.UNDEFINED))
+        fans_num = "0"
+        follow_num = "0"
+    try:
+        format_res["status"] = "success"
+        format_res["data"] = reformat_user_info(user_info, fans_num, follow_num)
+    except Exception as e:
+        logger.exception(e)
+    return format_res
 
 
 # 请求我的活动
@@ -196,34 +218,6 @@ def get_my_relation():
             "data": reformat_res}
 
 
-# # 请求我的关注信息
-# @app.route("/api/get_my_like")
-# def get_my_fans():
-#     """
-#     【请求】获取我的关注
-#     :return dict: 关注列表
-#     {"status": success,
-#      "data":
-#        [{'user_session': 'session', 'usr_name': 'gmh', 'other_name': 'a'},
-#         {'user_session': 'session', 'usr_name': 'gmh', 'other_name': 'b'},
-#         {'user_session': 'session', 'usr_name': 'gmh', 'other_name': 'c'},
-#         {'user_session': 'session', 'usr_name': 'gmh', 'other_name': 'd'},
-#         {'user_session': 'session', 'usr_name': 'gmh', 'other_name': 'sx'}]
-#
-#      }
-#     """
-#     user_session = request.values.get("user_session")
-#     conn = DataBase("HaiChuang")
-#     reformat_res = []
-#     try:
-#         res = conn.complex_select(sqls.GET_USER_LIKE.format(user_session))
-#         reformat_res = reformat_my_fans_like(res)
-#         status = "success"
-#     except Exception as e:
-#         logger.error(e)
-#         status = "error"
-#     return {"status": status,
-#             "data": reformat_res}
 
 
 if __name__ == '__main__':

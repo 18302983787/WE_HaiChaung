@@ -85,6 +85,32 @@ def reformat_my_relation(res, conn):
             logger.info(f"{k},{v}")
             tmp_dict[k] = v
         # 查找用户与粉丝的关系
-        tmp_dict["relation"] = get_relation(ids, conn,)
+        tmp_dict["relation"] = get_relation(ids, conn)
         res_list.append(tmp_dict)
     return res_list
+
+
+def reformat_user_info(user_info, fans_num, follow_num):
+    """
+    解析用户信息
+    :param user_info:
+    :param fans_num:
+    :param follow_num:
+    :return:
+
+    eg:
+    user_info:(('管明皓', 'test', '090e54a81a91aa89172202a90c1f2ba6'),)
+    fans_num:((0,),)
+    follow_num:((0,),)
+    """
+    if not user_info or not fans_num or not follow_num:
+        logger.error(
+            f"【用户中心】用户信息获取失败，返回值中存在none。返回值: user_info:{user_info}, fans_num:{fans_num}, follow_num:{follow_num}")
+    username, head_image, user_session, score = user_info[0]
+    fans_num = fans_num[0][0]
+    follow_num = follow_num[0][0]
+    return {"username": username,
+            "head_image": head_image,
+            "score":score,
+            "fans_num": fans_num,
+            "follow_num": follow_num}
