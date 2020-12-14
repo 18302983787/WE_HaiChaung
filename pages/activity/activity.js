@@ -2,6 +2,7 @@
 var app = getApp()
 Page({
   goto_activity:function(e){
+    console.log(e)
     var act=e.currentTarget.dataset;
     wx.navigateTo({
       url: '../details/details',
