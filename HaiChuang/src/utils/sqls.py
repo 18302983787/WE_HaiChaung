@@ -15,6 +15,11 @@ GET_USER_CENTER = """select username, head_image, user_session, score from hc_us
 GET_USER_FANS_NUM = """select count(id) from hc_fans where user_session="{user_session}";"""
 GET_USER_FOLLOW_NUM = """select count(id) from hc_fans where fans_session="{user_session}";"""
 
+# 查询用户信息详情
+GET_PERSONAL_INFO = """select username, head_image, gender, age, birth, loc, graduate from hc_user where user_session="{user_session}";"""
+# 未注册用户访问时的用户
+GET_DEFAULT_USER_INFO = """select username, head_image, gender, age, birth, loc, graduate from hc_user where user_session="hc_default_user_session";"""
+
 # 查询用户报名/参加过的活动
 GET_USER_ACTIVITY = """select id, uid, actname, act_time, act_detail, posters from (hc_activity as a inner join 
 (select  act_id, usr_session from hc_activity_sign where usr_session="{user_session}") as b on 

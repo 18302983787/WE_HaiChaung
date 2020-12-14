@@ -80,9 +80,28 @@ def get_user_info():
         fans_num = "0"
         follow_num = "0"
     try:
-        format_res["status"] = "success"
         format_res["data"] = reformat_user_info(user_info, fans_num, follow_num)
+        format_res["status"] = "success"
     except Exception as e:
+        logger.exception(e)
+    return format_res
+
+
+# 请求个人资料页面
+@app.route("/api/get_personal_info", methods=['POST'])
+def get_personal_info():
+    user_session = request.values.get("user_session")
+    conn = HCDataBase()
+    format_res = {"status": "error", "data": dict()}
+    if user_session:
+        personal_info = conn.execute_sql_return_res(sqls.GET_PERSONAL_INFO.format(user_session=user_session))
+    else:
+        personal_info = conn.execute_sql_return_res(sqls.GET_DEFAULT_USER_INFO)
+    try:
+        format_res["data"] = reformat_personal_info(personal_info)
+        format_res["status"] = "success"
+    except Exception as e:
+        logger.info("个人资料信息解析失败")
         logger.exception(e)
     return format_res
 
@@ -216,8 +235,6 @@ def get_my_relation():
         status = "error"
     return {"status": status,
             "data": reformat_res}
-
-
 
 
 if __name__ == '__main__':

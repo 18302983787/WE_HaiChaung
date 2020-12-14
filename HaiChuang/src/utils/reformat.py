@@ -111,6 +111,24 @@ def reformat_user_info(user_info, fans_num, follow_num):
     follow_num = follow_num[0][0]
     return {"username": username,
             "head_image": head_image,
-            "score":score,
+            "score": score,
             "fans_num": fans_num,
             "follow_num": follow_num}
+
+
+def reformat_personal_info(personal_info):
+    """
+    解析用户个人信息详情页数据
+    :param personal_info:
+    :return:
+    eg:
+
+    """
+    personal_info = personal_info[0]
+    return {"username": personal_info[0],
+            "head_image": personal_info[1],
+            "gender": personal_info[2],
+            "age": personal_info[3],
+            "birth": personal_info[4],
+            "loc": personal_info[5],
+            "graduate": personal_info[6]}
