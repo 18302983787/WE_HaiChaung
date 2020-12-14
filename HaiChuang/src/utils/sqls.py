@@ -26,6 +26,8 @@ GET_USER_ACTIVITY = """select id, uid, actname, act_time, act_detail, posters fr
 a.uid=b.act_id) where DATE_FORMAT(act_time,"%Y-%m-%d") {compare} "{today}";
 """
 
+VIEW_PLUS_ONE = """update hc_recruit set views=views+1 where uid="{uid}"; """
+
 # ======================================================粉丝，关注模块====================================================
 # 查询用户粉丝信息
 GET_USER_FANS = """select a.usr_id, a.fans_id, a.fans_name, a.fans_session, b.head_image from (select usr_id, fans_id, 

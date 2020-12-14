@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def haichuang_web():
-    return render_template("../templates/haichuang_web.html")
+    return render_template("/home/haichuang/hc_server/templates/haichuang_web.html")
 
 
 # 登录
@@ -134,6 +134,45 @@ def get_my_activity():
     return {"status": status,
             "data": reformat_res,
             "length": len(reformat_res)}
+
+
+# 请求我的招聘
+@app.route("/api/get_my_recruit", methods=["POST"])
+def get_my_recruit():
+    """
+    请求我的招聘
+    :return dict:
+    """
+    # TODO 获取浏览过的招聘信息
+    user_session = request.values.get("user_session")
+    get_type = request.values.get("get_type")
+    logger.info(f"【api-get_my_recruit】user_session:{user_session}\tget_type:{get_type}")
+    conn = HCDataBase("HaiChuang")
+    reformat_res = []
+
+    return {"status": "",
+            "data": reformat_res,
+            "length": len(reformat_res)}
+
+
+# 刷新文章的阅读量
+@app.route("/api/view_plus_one", methods=["POST"])
+def view_plus_one():
+    """
+    招聘信息浏览量刷新
+    :return:
+    """
+    user_session = request.values.get("user_session")
+    uid = request.values.get("rec_uid")
+    logger.info(f"【api-view_plus_one】 user_session:{user_session}")
+    conn = HCDataBase("HaiChuang")
+    try:
+        conn._execute_sql(sqls.VIEW_PLUS_ONE.format(uid=uid))
+        status = "success"
+    except Exception as e:
+        logger.error(e)
+        status = "error"
+    return {"status": status}
 
 
 # 报名
