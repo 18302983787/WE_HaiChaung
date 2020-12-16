@@ -23,7 +23,7 @@ Page({
   },
   goto_points:function(){
     wx.navigateTo({
-      url: '../my_follow/my_follow',
+      url: '../my_integral/my_integral',
     })
   },
   goto_pf:function(){
