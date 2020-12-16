@@ -1,1 +1,8 @@
 /* pages/out_link/out_link.wxss */
+
+.web_config{
+  nav-index: auto;
+  width: 100%;
+  height: 500px;
+  border: 1px red solid;
+}

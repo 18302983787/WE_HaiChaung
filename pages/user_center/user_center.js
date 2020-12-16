@@ -59,13 +59,33 @@ Page({
     this.getUserData()
   },
 
+
+  getUserSession:function(){
+    var that = this
+    wx.getStorage({
+      key: 'user_session',
+      success(e){
+        that.setData({
+          user_session:e.data
+        })
+      }
+    })
+  },
   getUserData:function(){
     var that = this;
+    wx.getStorage({
+      key: 'user_session',
+      success(e){
+        that.setData({
+          user_session:e.data
+        })
+      }
+    }),
+    console.log(that.data.user_session)
     wx.request({
-      url: 'https://haichuanghao.com/api/request_info',
+      url: 'https://haichuanghao.com/api/get_user_info',
       data:{
-        "table":"hc_user",
-        "user_session":app.globalData.user_session
+        "user_session":"090e54a81a91aa89172202a90c1f2ba6"
       },
       header:{
         // 'content-type': 'application/json' // 默认值
@@ -73,9 +93,9 @@ Page({
       },
       method:"POST",
       success(res){
-        console.log(res.data["0"])
+        console.log(res.data.data)
         that.setData({
-          user_info:res.data["0"]
+          user_info:res.data.data
         })
       }
     })

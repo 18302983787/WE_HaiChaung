@@ -1,6 +1,14 @@
 // pages/recruit/recruit.js
 Page({
-
+  goto_recruit:function(e){
+    var act=e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '../out_link/out_link',
+      success: function(res){
+        res.eventChannel.emit('dataFromOpenPage',act)
+      }
+    })
+  },
   /**
    * 页面的初始数据
    */
@@ -17,9 +25,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("getting recs")
     this.getActData();
   },
+
   getActData:function(){
     var that = this;
     wx.request({
@@ -35,16 +43,9 @@ Page({
         that.setData({
           recruits:res.data
         })
-        console.log("recruits")
-        console.log(res.data)
+        console.log("recruit_data:", res.data)
       }
     })
-  },
-  gotoLink:function(){
-    wx.navigateTo({
-      url: '../out_link/out_link',
-    })
-
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -75,7 +76,6 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
   },
 
   /**

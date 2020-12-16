@@ -1,6 +1,6 @@
 <!--pages/details/details.wxml-->
 <view class="content">
-   <view class="nav_back" bindtap="go_back"></view>
+  <view class="nav_back" bindtap="go_back"></view>
   <view class="nav_back_title">活动详情</view>
   <view class="info_head">
     <image src="{{act_detail.iamge}}" mode="scaleToFill"></image>
