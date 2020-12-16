@@ -2,26 +2,38 @@
 <view class="content">
   <view class="nav_back" bindtap="go_back"></view>
   <view class="nav_back_title">我的积分</view>
-  <view class="info_head"></view>
+  <view class="info_head">
+    <div class="num_1">
+      <span class="num_top">积分数</span>
+      <span class="num_buttom">34</span>
+    </div>
+    <div class="num_2">
+      <span class="num_top">段位</span>
+      <span class="num_buttom num_fit">榜眼</span>
+    </div>
+    <div class="num_btn">
+      <span>签到</span>
+    </div>
+  </view>
   <view class="detail">
+    <view class="detail-title">
+      <span>推荐好友赢积分</span>
+    </view>
     <view class="activties">
       <view class="act" wx:for="{{my_acts}}" wx:key="key">
         <view class="act_image"></view>
         <view class="act_name">活动名称</view>
         <view class="comments">2020年6月例会</view>
-        <view class="time">2020-06-24</view>
       </view>
       <view class="act" bindtap="goto_detail">
         <view class="act_image"></view>
         <view class="act_name">活动名称</view>
         <view class="comments">2020年6月例会</view>
-        <view class="time">2020-06-24</view>
       </view>
       <view class="act">
         <view class="act_image"></view>
         <view class="act_name">活动名称</view>
         <view class="comments">2020年6月例会</view>
-        <view class="time">2020-06-24</view>
       </view>
     </view>
   </view>

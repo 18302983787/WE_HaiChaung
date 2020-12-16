@@ -2,16 +2,85 @@
 /* pages/my_activity/my_activity.wxss */
 @import "../template/common.wxss";
 .info_head{
-  height:125px;
+  margin-top: 100px;
+  height:180px;
   border:1px rgba(255, 255, 255, 0.001) solid;
 }
 
+.num_1 {
+  display: inline-block;
+  color:#FFF;
+  font-size: 15px;
+  margin: 50px 0 0 48px;
+}
+
+.num_2 {
+  display: inline-block;
+  color:#FFF;
+  font-size: 15px;
+  margin: 50px 0 0 30px;
+}
+
+.num_btn {
+  margin: 0 0 0 20px;
+  display: inline-block;
+  color:#3E81FF;
+  font-size: 15px;
+  background-color: #FFF;
+  width: 150px;
+  height: 49px;
+  background: #FFFFFF;
+  border-radius: 25px;
+  font-size: 20px;
+  font-family: PingFang-SC-Heavy, PingFang-SC;
+  font-weight: 800;
+  color: #3E81FF;
+  line-height: 28px;
+  text-align: center;
+}
+
+.num_btn span {
+  margin-top:10px;
+  line-height: 49px;
+}
+
+.num_top {
+  display: block;
+  font-size: 14px;
+  height: 21px;
+  font-size: 15px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 21px;
+}
+
+.num_buttom {
+  margin-top: 8px;
+  display: block;
+  height: 24px;
+  font-size: 24px;
+  /* font-family: WenYue-XinQingNianTi-NC-W8, WenYue-XinQingNianTi-NC; */
+  font-weight: normal;
+  color: #FFFFFF;
+  line-height: 24px;
+}
 
 .detail{
   float: left;
   height:100%;
   border-radius: 28px 28px 0px 0px;
   background:#FFFFFF;
+}
+
+.detail .detail-title {
+  text-align: center;
+  font-size: 13px;
+  font-family: PingFang-SC-Heavy, PingFang-SC;
+  font-weight: 800;
+  color: #3E81FF;
+  line-height: 25px;
+  margin-top:20px;
 }
 
 .activties{
