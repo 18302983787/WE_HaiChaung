@@ -5,34 +5,26 @@
   <view class="info_head"></view>
   <view class="detail">
     <view class="mn {{isTabA?'type_button_A':'type_button_B'}}" data-tab="1" bindtap="gotoTab"><text>待参加</text></view>
-    <view class="mn {{isTabB?'type_button_A':'type_button_B'}}" data-tab="2" bindtap="gotoTab"><text>已参加</text></view>
+    <view class="mn {{isTabB?'type_button_A':'type_button_B'}}" data-tab="2" bindtap="gotoTab"><text>已过期</text></view>
     <view class="activties">
-      <view class="act" wx:for="{{my_acts}}" wx:key="key">
-        <view class="act_image"></view>
-        <view class="act_name">活动名称</view>
-        <view class="comments">2020年6月例会</view>
-        <view class="time">2020-06-24</view>
-        <!-- <view data-item="{{item}}" bindtap="goto_activity">
-        <view class="act_name">{{item.actname}}</view>
-        <view class="act_info">
-          <image src="../images/activity/ad_1.jpg"></image>
-          <view class="line_time">
-            <image src="../images/template/time2x.png"></image>
-            <text>{{item.act_time}}</text>
-          </view>
-          <view class="line_loc">
-            <image src="../images/template/loc2x.png"></image>
-            <text>{{item.loc}}</text>
-          </view>
-          <view class="line_people">
-            <image src="../images/template/people2x.png"></image>
-            <text>{{item.people}}/{{item.people_limit}}</text>
-          </view>
-        </view>
-        </view>
-        <view class="sign_up" data-uid="{{item.uid}}" bindtap="signUp"><text>立即报名</text></view> -->
+      <view wx:if="{{my_acts.length==0}}">
+        <text>没有未参加的活动！</text>
       </view>
-      <view class="act" bindtap="goto_detail">
+      <view wx:else>
+        <view class="act" wx:for="{{my_acts.data}}" wx:key="key">
+          <view data-item="{{item}}" bindtap="goto_detail">
+            <view class="act">
+              <view class="act_image"></view>
+              <view class="act_name">{{item.actname}}</view>
+              <view class="comments">{{item.act_detail}}</view>
+              <view class="time">{{item.act_time}}</view>
+              <!-- <view class="sign_up" data-uid="{{item.uid}}" bindtap="signUp"><text>立即报名</text></view> -->
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 静态数据 -->
+       <!-- <view class="act" bindtap="goto_detail">
         <view class="act_image"></view>
         <view class="act_name">活动名称</view>
         <view class="comments">2020年6月例会</view>
@@ -43,7 +35,7 @@
         <view class="act_name">活动名称</view>
         <view class="comments">2020年6月例会</view>
         <view class="time">2020-06-24</view>
-      </view>
+      </view> -->
     </view>
   </view>
 </view>

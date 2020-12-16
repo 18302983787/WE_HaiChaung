@@ -4,91 +4,47 @@
   <view class="nav_back" bindtap="go_back"></view>
   <view class="nav_back_title">我的粉丝</view>
   <view class="info_back">
-    <view class="info">
-      <view class="head_image"></view>
-      <view class="user_name">
-        <text>托塔李天王</text>
-        <view class="tag_content">
-          <view class="tag"><text>海归</text></view>
-          <view class="tag"><text>招聘</text></view>
-        </view>
-
-      </view>
-      <view class="follow_or_not">
-      <text>互相关注</text>
-      </view>
+    <view wx:if="{{my_fans.data.length==0}}">
+      <text> 暂时没有粉丝 </text>
     </view>
+    <view wx:else>
+      <view wx:for="{{my_fans.data}}" wx:key="key">
         <view class="info">
-      <view class="head_image"></view>
-      <view class="user_name">
-        <text>托塔李天王</text>
-        <view class="tag_content">
-          <view class="tag"><text>海归</text></view>
-          <view class="tag"><text>招聘</text></view>
-        </view>
-
+          <view class="head_image"></view>
+          <!-- <view class="head_image">{{item.head_image}}</view> -->
+          <view class="user_name">
+            <text>{{item.name}}</text>
+            <view class="tag_content">
+              <view class="tag"><text>海归</text></view>
+              <view class="tag"><text>招聘</text></view>
+            </view>
+            </view>
+          <view class="follow_or_not">
+          <view wx:if="{{item.relation=='0'}}">
+            <text>关注</text>
+          </view>
+          <view wx:else>
+            <text>互相关注</text>
+          </view>
+          </view>
       </view>
-      <view class="follow_or_not">
-      <text>关   注</text>
-      </view>
-    </view>
-        <view class="info">
-      <view class="head_image"></view>
-      <view class="user_name">
-        <text>托塔李天王</text>
-        <view class="tag_content">
-          <view class="tag"><text>海归</text></view>
-          <view class="tag"><text>招聘</text></view>
-        </view>
-
-      </view>
-      <view class="follow_or_not">
-      <text>互相关注</text>
-      </view>
-    </view>
-        <view class="info">
-      <view class="head_image"></view>
-      <view class="user_name">
-        <text>托塔李天王</text>
-        <view class="tag_content">
-          <view class="tag"><text>海归</text></view>
-          <view class="tag"><text>招聘</text></view>
-        </view>
-
-      </view>
-      <view class="follow_or_not">
-      <text>互相关注</text>
-      </view>
-    </view>
-        <view class="info">
-      <view class="head_image"></view>
-      <view class="user_name">
-        <text>托塔李天王</text>
-        <view class="tag_content">
-          <view class="tag"><text>海归</text></view>
-          <view class="tag"><text>招聘</text></view>
-        </view>
-
-      </view>
-      <view class="follow_or_not">
-      <text>互相关注</text>
-      </view>
-    </view>
-        <view class="info">
-      <view class="head_image"></view>
-      <view class="user_name">
-        <text>托塔李天王</text>
-        <view class="tag_content">
-          <view class="tag"><text>海归</text></view>
-          <view class="tag"><text>招聘</text></view>
-        </view>
-
-      </view>
-      <view class="follow_or_not">
-      <text>互相关注</text>
       </view>
     </view>
   </view>
+    <!-- <view class="info">
+      <view class="head_image"></view>
+      <view class="user_name">
+        <text>托塔李天王</text>
+        <view class="tag_content">
+          <view class="tag"><text>海归</text></view>
+          <view class="tag"><text>招聘</text></view>
+        </view>
+      </view>
+      <view class="follow_or_not">
+      <text>互相关注</text>
+      </view>
+    </view>
+  </view> -->
 
 </view>
 

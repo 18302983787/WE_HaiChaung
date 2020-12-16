@@ -43,37 +43,40 @@ Page({
 
   signUp:function(e){
     var that = this
+    console.log("aaa")
+    console.log(that.act_detail)
     wx.request({
       url: 'https://haichuanghao.com/api/sign_up',
       data:{
         "act_uid":e.currentTarget.dataset.uid,
-        "table_name":"hc_activitySign",
-        "user_session":this.data.user_session,
+        "table_name":"hc_activity_sign",
+        "user_session":that.data.user_session,
       },
       header:{
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       method:"POST",
       success(res){
-        if (res.data.response=="success"){
+        console.log("res", res.data.status)
+        if (res.data.status=="success"){
           wx.showToast({
             title: '报名成功',
             icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
             duration: 2000     
           })
-        } else if (res.data.response=="singed"){
+        } else if (res.data.status=="signed"){
           wx.showToast({
             title: '已经报名过啦',
             icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
             duration: 2000     
           })
-        } else if (res.data.response=="full"){
+        } else if (res.data.status=="full"){
           wx.showToast({
             title: '报名人数已满',
             icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
             duration: 2000     
           })
-        } else if (res.data.response=="error"){
+        } else if (res.data.status=="error"){
           wx.showToast({
             title: '报名失败，请稍后重试',
             icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
