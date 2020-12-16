@@ -32,6 +32,11 @@
 			<!-- <view class="sign_users" wx:for="{{item.signed_users}}" wx:key="key"> -->
 				<!-- <image src="item"></image> -->
 			<!-- </view> -->
+      <view class="sign_users">
+        <span class="avatar" style="background: url('../images/template/1.jpg') center center;margin-left:100px;"></span>
+        <span class="avatar" style="background: url('../images/template/1.jpg') center center;"></span>
+        <span class="avatar" style="background: url('../images/template/1.jpg') center center;"></span>
+      </view>
 		</view>
 	</view>
 </view>

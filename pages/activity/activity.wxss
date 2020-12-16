@@ -154,17 +154,37 @@
 }
 
 .sign_users{
-  float: left;
-  height: 26.64px;
-  margin-top: 11.1px;
-  margin-left: 84.14999999999999px;
+  margin-left: 30px;
 }
 
-.sign_users image{
-  width:26.64px;
-  height:26.64px;
-  border:2px solid rgba(100,154,255,1);
-  float: left;
+.sign_users .avatar{
+  border: 3px solid  #649AFF;
+  margin-top:5px;
+  /* box-shadow: 0 0 0 1px #fff; */
+  margin-right: -10px !important;
+  background-size:100% 100%;
+  width: 34px;
+  height: 34px;
+  line-height: 20px;
+  display: inline-block;
+  background: #2ddcd3 no-repeat center/cover;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  vertical-align: bottom;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+	border-radius: 50%;
+  background-repeat:no-repeat;
+  /* background-size: cover; */
+  background-position:0px 0px;  
+}
+
+.sign_users .more{
+  border: 0px;
 }
 
 
