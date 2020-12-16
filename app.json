@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/my_identificate/my_identificate",
     "pages/index/index",
     "pages/user_center/user_center",
     "pages/activity/activity",
@@ -14,7 +15,6 @@
     "pages/my_activity/my_activity",
     "pages/logs/logs",
     "pages/out_link/out_link",
-    "pages/my_identificate/my_identificate",
     "pages/my_config/my_config"
 
   ],

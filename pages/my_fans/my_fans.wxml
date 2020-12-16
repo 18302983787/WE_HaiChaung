@@ -1,5 +1,4 @@
 <!--pages/my_fans/my_fans.wxml-->
-<!--pages/my_follow/my_follow.wxml-->
 <view class="content">
   <view class="nav_back" bindtap="go_back"></view>
   <view class="nav_back_title">我的粉丝</view>
