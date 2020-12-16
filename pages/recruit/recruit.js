@@ -8,6 +8,22 @@ Page({
         res.eventChannel.emit('dataFromOpenPage',act)
       }
     })
+    
+    wx.request({
+      url: 'https://haichuanghao.com/api/update_recruit_history',     
+      data:{
+        "rec_uid":data.item.uid,
+        "user_session":"",
+      },
+      header:{
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method:"POST",
+      success(res){
+        console.log(data.item.uid)
+        console.log("stauts:", res.data.status)
+      }
+    })
   },
   /**
    * 页面的初始数据
