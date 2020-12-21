@@ -9,7 +9,7 @@
   </view> -->
   <view class="detail">
     <block wx:for="{{recruits}}" wx:key="key">
-      <view class="recruit_info" bindtap="gotoLink">
+      <view class="recruit_info" data-item="{{item}}" bindtap="goto_recruit">
         <view class="pub_time">发布时间 {{item.pub_time}}</view>
         <view class="like">
           <image src="../images/template/like2x.png"></image>

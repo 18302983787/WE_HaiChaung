@@ -5,7 +5,60 @@ Page({
    * 页面的初始数据
    */
   data: {
+      src_id_a:"",
+      src_id_b:""
+  },
 
+  goto_cam_a:function(){
+    var that = this
+    wx.chooseImage({
+      count: 1,
+      success:function(res){
+        console.log("选取图片")
+        that.setData({
+          src_id_a:res.tempFilePaths[0]
+        })
+      }
+    })
+  },
+  goto_cam_b:function(){
+    var that = this
+    wx.chooseImage({
+      count: 1,
+      success:function(res){
+        console.log("选取图片:", res)
+        console.log(res.tempFilePaths)
+        that.setData({
+          src_id_b:res.tempFilePaths
+        })
+        // wx.uploadFile({
+        //   filePath: 'filePath',
+        //   name: 'name',
+        //   url: 'url',
+        // })
+      }
+    })
+  },
+
+  identify:function(){
+    var that = this
+    console.log(that.data.src_id_a)
+    wx.request({
+      url: 'https://haichuanghao.com/api/identify',
+      data:{
+        "id_a":that.data.src_id_a,
+        "id_b":that.data.src_id_b,
+      },
+      header:{
+        // 'content-type': 'application/json' // 默认值
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      method:"POST",
+      success(res){
+        console.log(res.data)
+        var status = res.status
+      }
+      })
   },
 
   /**

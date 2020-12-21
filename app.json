@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/my_identificate/my_identificate",
+    "pages/index/index",
     "pages/user_center/user_center",
     "pages/activity/activity",
     "pages/my_integral/my_integral",
-    "pages/index/index",
     "pages/regist/regist",
     "pages/personal_profile/personal_profile",
     "pages/details/details",
@@ -14,7 +15,6 @@
     "pages/my_activity/my_activity",
     "pages/logs/logs",
     "pages/out_link/out_link",
-    "pages/my_identificate/my_identificate",
     "pages/my_config/my_config"
 
   ],
@@ -22,7 +22,8 @@
     "backgroundTextStyle": "light",
     "navigationStyle": "custom",
     "navigationBarTitleText": "海创号",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#F8F8F8"
   },
   "tabBar": {
     "color": "#ADC9FE",

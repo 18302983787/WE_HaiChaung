@@ -18,19 +18,25 @@ Page({
 
   getUserSession:function(){
     var that = this
-    wx.request({
-      url: 'https://haichuanghao.com/api/request_info',
-      method:"POST",
-      header:{
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      data:{
-        "table":"hc_user",
-        "user_session":app.globalData.user_session,
-      },
-      success(res){
-        that.setData({
-          user_info:res.data["0"]
+    wx.getStorage({
+      key: 'user_session',
+      success(e){
+        wx.request({
+          url: 'https://haichuanghao.com/api/get_personal_info',
+          method:"POST",
+          header:{
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          data:{
+            "table":"hc_user",
+            "user_session":e.data,
+          },
+          success(res){
+            console.log(res.data)
+            that.setData({
+              user_info:res.data.data
+            })
+          }
         })
       }
     })

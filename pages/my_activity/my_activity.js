@@ -16,73 +16,71 @@ Page({
       delta: 0,
     })
   },
-  goto_detail:function(){
+  goto_detail:function(e){
+    var act=e.currentTarget.dataset;
     wx.navigateTo({
       url: '../details/details',
+      success: function(res){
+        res.eventChannel.emit('dataFromOpenPage',act)
+      }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getUserSession()
     this.getMyAct()
   },
 
-  getUserSession:function(){
+
+  getMyAct: function(){
     var that = this
     wx.getStorage({
       key: 'user_session',
       success(e){
-        that.setData({
-          user_session:e.data
+        wx.request({
+          url: 'https://haichuanghao.com/api/get_my_activity',
+          data:{
+            "user_session": e.data, 
+            "get_type":"ongoing",
+          },
+          header:{
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          method:"POST",
+          success(res){
+            that.setData({
+              my_acts:res.data
+            })
+            console.log("res",res.data)
+          }
         })
-      }
-    })
-  },
-
-  getMyAct: function(){
-    var that = this
-    wx.request({
-      url: 'https://haichuanghao.com/api/get_my_activity',
-      data:{
-        // fixme 刷新之后globaldata消失？
-        // "user_session":app.globalData.user_session,
-        "user_session": "090e54a81a91aa89172202a90c1f2ba6", 
-        "get_type":"ongoing",
-      },
-      header:{
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      method:"POST",
-      success(res){
-        that.setData({
-          my_acts:res.data
-        })
-        console.log("res",res.data)
       }
     })
   },
 
   getHisoryAct: function(){
     var that = this
-    wx.request({
-      url: 'https://haichuanghao.com/api/get_my_activity',
-      data:{
-        // fixme 刷新之后globaldata消失？
-        // "user_session":app.globalData.user_session,
-        "user_session": "090e54a81a91aa89172202a90c1f2ba6", 
-        "get_type":"expired",
-      },
-      header:{
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      method:"POST",
-      success(res){
-        that.setData({
-          my_acts:res.data
+    wx.getStorage({
+      key: 'user_session',
+      success(e){
+        wx.request({
+          url: 'https://haichuanghao.com/api/get_my_activity',
+          data:{
+            "user_session": e.data, 
+            "get_type":"expired",
+          },
+          header:{
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          method:"POST",
+          success(res){
+            that.setData({
+              my_acts:res.data
+            })
+            console.log("res",res.data)
+          }
         })
-        console.log("res",res.data)
       }
     })
   },

@@ -1,12 +1,12 @@
 // pages/details/details.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     act_detail:{},
     user_session:"",
+    uid:"",
   },
   go_back:function(){
     wx.navigateBack({
@@ -16,82 +16,74 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var that = this
+  onLoad: function(options){
+    var that = this;
     const eventChannel = that.getOpenerEventChannel()
-    that.getUserSession()
     // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
-    eventChannel.on('dataFromOpenPage', function(data) {
+    eventChannel.on('dataFromOpenPage', function(data){
+      console.log(data.item)
       that.setData({
         act_detail:data,
       })
-      console.log(data)
     })
   },
 
-  getUserSession:function(){
+  signUp:function(){
     var that = this
-    wx.getStorage({
-      key: 'user_session',
-      success(e){
-        that.setData({
-          user_session:e.data
-        })
-      }
-    })
-  },
-
-  signUp:function(e){
-    var that = this
-    console.log("aaa")
-    console.log(that.act_detail)
-    wx.request({
-      url: 'https://haichuanghao.com/api/sign_up',
-      data:{
-        "act_uid":e.currentTarget.dataset.uid,
-        "table_name":"hc_activity_sign",
-        "user_session":that.data.user_session,
-      },
-      header:{
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      method:"POST",
-      success(res){
-        console.log("res", res.data.status)
-        if (res.data.status=="success"){
-          wx.showToast({
-            title: '报名成功',
-            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
-            duration: 2000     
-          })
-        } else if (res.data.status=="signed"){
-          wx.showToast({
-            title: '已经报名过啦',
-            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
-            duration: 2000     
-          })
-        } else if (res.data.status=="full"){
-          wx.showToast({
-            title: '报名人数已满',
-            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
-            duration: 2000     
-          })
-        } else if (res.data.status=="error"){
-          wx.showToast({
-            title: '报名失败，请稍后重试',
-            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
-            duration: 2000     
-          })
-        } else{
-          wx.showToast({
-            title: '未知错误，请联系相关技术人员',
-            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
-            duration: 2000     
+      wx.getStorage({
+        key: 'user_session',
+        success(e_u_s){
+          wx.request({
+            url: 'https://haichuanghao.com/api/sign_up',
+            data:{
+              "act_uid":that.data.act_detail.item.uid,
+              "table_name":"hc_activity_sign",
+              "user_session":e_u_s.data,
+            },
+            header:{
+              'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            method:"POST",
+            success(res){
+              console.log("res:", res.data.status)
+              if (res.data.status=="success"){
+                wx.showToast({
+                  title: '报名成功',
+                  icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+                  duration: 2000     
+                })
+              } else if (res.data.status=="signed"){
+                wx.showToast({
+                  title: '已经报名过啦',
+                  icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+                  duration: 2000     
+                })
+              } else if (res.data.status=="full"){
+                wx.showToast({
+                  title: '报名人数已满',
+                  icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+                  duration: 2000     
+                })
+              } else if (res.data.status=="error"){
+                wx.showToast({
+                  title: '报名失败，请稍后重试',
+                  icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+                  duration: 2000     
+                })
+              } else{
+                wx.showToast({
+                  title: '未知错误，请联系相关技术人员',
+                  icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+                  duration: 2000     
+                })
+              }
+            }
           })
         }
-      }
-    })
+      })
   },
+
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
