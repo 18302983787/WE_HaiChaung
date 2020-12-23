@@ -13,6 +13,32 @@ from utils.common_utils import date_2_string, get_relation
 from utils.filelog import logger
 
 
+def reformat_activity(res):
+    """
+
+    :param res: 活动查询结果
+    :return:
+    """
+    res_list = []
+    if not res:
+        return res_list
+    # 将每一行数据生成的字典添加进列表
+    for line in res:
+        tmp_dict = {}
+        # 先把每一行的数据拼接成字典
+        for k, v in zip(["id", "uid", "actname", "act_detail", "act_time", "loc", "people", "posters", "people_limit",
+                         "user_names", "user_images"], list(line)):
+            if k == "act_time":
+                v = date_2_string(v)
+            if k in ["user_names", "user_images"]:
+                v = v.split(",") if v else v
+                tmp_dict[k] = v
+                continue
+            tmp_dict[k] = str(v)
+        res_list.append(tmp_dict)
+    return res_list
+
+
 def reformat_my_activity(res):
     """
     解析我的活动的返回值
@@ -49,6 +75,39 @@ def reformat_my_activity(res):
         # TODO 增加poster的返回值
         for k, v in zip(["id", "uid", "actname", "act_time", "act_detail", "posters"], list(line)):
             if k == "act_time":
+                v = date_2_string(v)
+            tmp_dict[k] = str(v)
+        res_list.append(tmp_dict)
+    return res_list
+
+
+def reformat_my_recruit(res):
+    """
+        解析我赞过的招聘的返回值
+        输入数据：
+            ((1, 'HC_REC_0001', '西安铂力特增材技术股份有限公司', datetime.datetime(2020, 8, 11, 0, 0), 2, 27, 'https://mp.weixin.qq.com/s/X_jWaADfpp1x8gXuZRgwXA'),)
+        :param tuple res:
+        :return list:
+            [
+        	{
+                act_detail: "旨在帮助各位海归青年熟悉自己曾经流利的英语的沙龙活动"
+                act_time: "2020-08-01"
+                actname: "海归人才英语口语沙龙——《影视品鉴会》"
+                id: 1
+                uid: "HC_ACT_0001"
+    		},
+            ...
+    	]
+        """
+    res_list = []
+    if not res:
+        return res_list
+    # 将每一行数据生成的字典添加进列表
+    for line in res:
+        tmp_dict = {}
+        # 先把每一行的数据拼接成字典
+        for k, v in zip(["id", "uid", "rec_name", "rec_time", "likes", "views", "link"], list(line)):
+            if k == "rec_time":
                 v = date_2_string(v)
             tmp_dict[k] = str(v)
         res_list.append(tmp_dict)
@@ -132,3 +191,23 @@ def reformat_personal_info(personal_info):
             "birth": personal_info[4],
             "loc": personal_info[5],
             "graduate": personal_info[6]}
+
+
+def reformat_ocr_id(id_a, id_b, user_session):
+    """
+    身份证信息解析
+    :param dict id_a: 人像面信息
+    :param dict id_b: 国徽面信息
+    :param str user_session: 用户session
+    :return:
+    """
+    id_info = dict()
+    id_info["name"] = id_a.get("name")
+    id_info["id_num"] = id_a.get("id")
+    id_info["addr"] = id_a.get("addr")
+    id_info["gender"] = id_a.get("gender")
+    id_info["nationality"] = id_a.get("nationality")
+    id_info["birth"] = id_a.get("birth")
+    id_info["valid_date"] = id_b.get("valid_date")
+    id_info["user_session"] = user_session
+    return id_info

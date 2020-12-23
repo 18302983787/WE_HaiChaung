@@ -9,10 +9,15 @@
 #      History:
 #=============================================================================
 """
-
+import os
 from datetime import datetime
+from flask import request
+import requests
 
 from utils import sqls
+from utils import config
+from utils.filelog import logger
+
 
 def id_format(_id):
     """
@@ -81,3 +86,45 @@ def get_relation(ids, conn):
         return 1
     else:
         return 0
+
+
+def get_access_token():
+    access_token_api = f"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={config.APP_ID}&" \
+                       f"secret={config.APP_SECRET}"
+    access_token = requests.get(access_token_api).json()
+    logger.info(access_token)
+    return access_token["access_token"]
+
+
+def ocr_id_card(image_url, access_token):
+    """
+    ocr识别身份证正反面
+    :param image_url:
+    :param access_token:
+    :return: id_card_info :
+    人像面:
+        {
+        'errcode': 0,
+        'errmsg': 'ok',
+        'type': 'Front',
+        'name': '管明皓',
+        'id': '61011119940920501X',
+        'addr': '西安市新城区长乐东路1号1号楼1门1层1号',
+        'gender': '男',
+        'nationality': '汉',
+        'birth': '1994-09-20',
+        'card_property': 4}
+    国徽面：
+        {
+        "errCode": 0,
+        "errMsg": "openapi.ocr.idcard:ok",
+        "type": "Back",
+        "validDate": "20070105-20270105"
+        }
+    """
+    logger.info(f"image url:{image_url}")
+    logger.info(f"access token :{access_token}")
+    ocr_url = f"https://api.weixin.qq.com/cv/ocr/idcard?type=Front&img_url={image_url}&access_token={access_token}"
+    id_card_info = requests.post(ocr_url).json()
+    logger.info(f"id_card_info : {id_card_info}")
+    return id_card_info
