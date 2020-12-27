@@ -12,6 +12,7 @@ Page({
     ],
     formData: {
     },
+    date:"1990-01-01",
     rules: [{
       name: 'username',
       rules: [{ required: true, message: '请填写姓名' }, { maxlength: 5, message: '姓名长度不超过五个字' }],

@@ -1,21 +1,21 @@
-<!--pages/my_follow/my_follow.wxml-->
+<!--pages/activity_signers/activity_signers.wxml-->
 <view class="content">
   <view class="nav_back" bindtap="go_back"></view>
-  <view class="nav_back_title">我的关注</view>
+  <view class="nav_back_title">报名用户</view>
   <view class="info_back">
-    <view wx:if="{{my_follows.data.length==0}}">
-      <text> 暂时没有关注 </text>
+    <view wx:if="{{activity_signers.data.length==0}}">
+      <text> 暂时无人报名 </text>
     </view>
     <view wx:else>
-      <view wx:for="{{my_follows.data}}" wx:key="key">
+      <view wx:for="{{activity_signers.data}}" wx:key="key">
         <view class="info">
           <!-- <view class="head_image"></view> -->
           <image class="head_image" src="{{item.head_image}}"></image>
           <view class="user_name">
-            <text>{{item.name}}</text>
+            <text>{{item.username}}</text>
             <view class="tag_content">
-              <view class="tag"><text>海归</text></view>
-              <view class="tag"><text>招聘</text></view>
+              <view class="tag"><text>{{item.age}}</text></view>
+              <view class="tag"><text>{{item.gender}}</text></view>
             </view>
             </view>
           <view class="follow_or_not" data-item="{{item}}" bindtap="follow_or_not">
@@ -35,7 +35,8 @@
       </view>
       </view>
     </view>
+  </view>
 </view>
 
-</view>
+
 

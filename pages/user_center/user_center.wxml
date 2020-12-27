@@ -2,6 +2,7 @@
 <view class="content">
   <view class="info_head">
     <view class="head_image">
+      <!-- <image mode="widthFix" src="{{user_info.head_image}}"></image> -->
       <open-data type="userAvatarUrl"></open-data>
     </view>
     <!-- 当前只做展示，后台数据交互逻辑实现中，接口已完成 -->
@@ -25,8 +26,10 @@
     <view class="user">
       <text class="t_username" bindtap="goto_pf">{{user_info.username}}</text>
       <view class="tag_content">
-        <view class="tag"><text>海归</text></view>
-        <view class="tag"><text>招聘</text></view>
+        <view wx:if="{{user_info.is_identified=='False'}}" class="big_tag"><text>未实名认证</text></view>
+        <view wx:else class="big_tag"><text>已实名认证</text></view>
+        <!-- <view class="tag"><text>海归</text></view> -->
+        <!-- <view class="tag"><text>招聘</text></view> -->
       </view>
     </view>
   </view>
@@ -39,17 +42,21 @@
       <image src="../images/user_center/job.png"></image>
       <text>我的招聘</text>
     </view>
-    <view class="extra_func" bindtap="goto_identificate">
+    <view wx:if="{{user_info.is_identified=='False'}}" class="extra_func" bindtap="goto_identificate">
       <image class="func_icon" src="../images/user_center/renzheng.png"></image>
       <text class="func_name">认证中心</text>
       <text class="func_desc_1">真实信息认证</text>
       <view class="more"></view>
     </view>
-    
+    <view wx:else class="extra_func">
+      <image class="func_icon" src="../images/user_center/renzheng.png"></image>
+      <text class="func_name">认证中心</text>
+      <text class="func_desc_1">已实名认证</text>
+    </view>
     <view class="extra_func" bindtap="goto_config">
       <image class="func_icon" src="../images/user_center/config.png"></image>
       <text class="func_name">设置</text>
-      <text class="func_desc_2">账户、个人信息、通知</text>
+      <button class="btn1" open-type='openSetting' bindopensetting="callback"><text class="func_desc_2">个人权限</text></button>
       <view class="more"></view>
     </view>
   </view>

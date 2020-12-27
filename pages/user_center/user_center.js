@@ -47,9 +47,6 @@ Page({
     })
   },
   goto_config:function(){
-    wx.navigateTo({
-      url: '../my_config/my_config',
-    })
   },
 
   /**
@@ -72,33 +69,32 @@ Page({
     })
   },
   getUserData:function(){
+    wx.showLoading({
+      title: '加载中...',
+    })
     var that = this;
     wx.getStorage({
       key: 'user_session',
       success(e){
-        that.setData({
-          user_session:e.data
-        })
-      }
-    }),
-    console.log(that.data.user_session)
-    wx.request({
-      url: 'https://haichuanghao.com/api/get_user_info',
-      data:{
-        "user_session":"090e54a81a91aa89172202a90c1f2ba6"
-      },
-      header:{
-        // 'content-type': 'application/json' // 默认值
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      method:"POST",
-      success(res){
-        console.log(res.data.data)
-        that.setData({
-          user_info:res.data.data
+        wx.request({
+          url: 'https://haichuanghao.com/api/get_user_info',
+          data:{
+            "user_session":e.data
+          },
+          header:{
+            // 'content-type': 'application/json' // 默认值
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          method:"POST",
+          success(res){
+            that.setData({
+              user_info:res.data.data
+            })
+          }
         })
       }
     })
+    wx.hideLoading()
   },
   
   /**
@@ -112,6 +108,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log("监听到onShow函数")
+    this.onLoad()
     wx.checkSession({
       success: function () {
         //session_key 未过期，并且在本生命周期一直有效
@@ -130,14 +128,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    console.log("监听到页面隐藏")
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log("监听到页面卸载")
   },
 
   /**

@@ -5,14 +5,65 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    score:"",
+    level:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    wx.getStorage({
+      key: 'user_session',
+      success(e){
+        wx.request({
+          url: 'https://haichuanghao.com/api/get_user_score',
+          data:{
+            "user_session":e.data
+          },
+          header:{
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          method:"POST",
+          success(res){
+            if (res.data.status == "success"){
+              that.setData({
+                score:res.data.data.score,
+                level:res.data.data.level,
+              })
+            }
+          }
+        })
+      }
+    })
+  },
 
+  daily_attendance:function(){
+    var that = this
+    wx.getStorage({
+      key: 'user_session',
+      success(e){
+        wx.request({
+          url: 'https://haichuanghao.com/api/daily_attendance',
+          data:{
+            "user_session":e.data
+          },
+          header:{
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          method:"POST",
+          success(res){
+            console.log(res)
+            if (res.data.status == "success"){
+              wx.showToast({
+                title: '签到成功！',
+              })
+            }
+          }
+        })
+      }
+    })
   },
 
   /**

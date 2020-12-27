@@ -6,46 +6,113 @@ Page({
    */
   data: {
       src_id_a:"",
-      src_id_b:""
+      show_a:"",
+      src_id_b:"",
+      show_b:"",
+      user_session:""
+  },
+  go_back:function(){
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];
+    prevPage.onLoad()
+    wx.navigateBack({
+      delta: 0,
+    })
   },
 
   goto_cam_a:function(){
     var that = this
+    wx.getStorage({
+      key: 'user_session',
+      success(e){
+        that.setData({
+          user_session:e.data
+        })
+      }
+    })
     wx.chooseImage({
-      count: 1,
+      count: 1, //最多可以选的图片张数
       success:function(res){
+        wx.showLoading({
+          title: '人像面上传中...',
+        })
         console.log("选取图片")
         that.setData({
-          src_id_a:res.tempFilePaths[0]
+          show_a:res.tempFilePaths[0]
+        })
+        wx.uploadFile({
+          url: 'https://haichuanghao.com/api/upload_ocr_pic',
+          filePath: res.tempFilePaths[0],
+          name: 'ocr_pic_file',
+          formData:{
+            "user_session":that.data.user_session,
+            "type":"portrait" // 人像面
+          },
+          success(upload_res){
+            console.log("upload请求成功 返回值：",upload_res.statusCode)
+            that.setData({
+              src_id_a:upload_res.data
+            })
+            wx.hideLoading()
+          }
         })
       }
     })
+    
+
   },
+
   goto_cam_b:function(){
     var that = this
-    wx.chooseImage({
-      count: 1,
-      success:function(res){
-        console.log("选取图片:", res)
-        console.log(res.tempFilePaths)
+    wx.getStorage({
+      key: 'user_session',
+      success(e){
         that.setData({
-          src_id_b:res.tempFilePaths
+          user_session:e.data
         })
-        // wx.uploadFile({
-        //   filePath: 'filePath',
-        //   name: 'name',
-        //   url: 'url',
-        // })
+      }
+    })
+    wx.chooseImage({
+      count: 1, //最多可以选的图片张数
+      success:function(res){
+        wx.showLoading({
+          title: '国徽面上传中...',
+        })
+        console.log("选取图片")
+        that.setData({
+          show_b:res.tempFilePaths[0]
+        })
+        wx.uploadFile({
+          url: 'https://haichuanghao.com/api/upload_ocr_pic',
+          filePath: res.tempFilePaths[0],
+          name: 'ocr_pic_file',
+          formData:{
+            "user_session":that.data.user_session,
+            "type":"national emblem" // 人像面
+          },
+          success(upload_res){
+            console.log("upload请求成功 返回值：",upload_res.statusCode)
+            that.setData({
+              src_id_b:upload_res.data
+            })
+            wx.hideLoading()
+          }
+        })
       }
     })
   },
+  
 
   identify:function(){
     var that = this
+    wx.showLoading({
+      title: '正在认证',
+    })
     console.log(that.data.src_id_a)
     wx.request({
       url: 'https://haichuanghao.com/api/identify',
       data:{
+        "user_session":that.data.user_session,
         "id_a":that.data.src_id_a,
         "id_b":that.data.src_id_b,
       },
@@ -56,7 +123,25 @@ Page({
       method:"POST",
       success(res){
         console.log(res.data)
-        var status = res.status
+        console.log("1",res.data.status)
+        if (res.data.status=="success") {
+          console.log(res.data.status)
+          wx.showToast({
+            title: '认证成功',
+            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+            duration: 5000     
+          })
+        }
+        else{
+          wx.showToast({
+            title: '认证失败。请尝试更换更清晰的图片。',
+            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+            duration: 5000     
+          })
+        }
+        wx.navigateBack({
+          delta: 0,
+        })
       }
       })
   },
@@ -65,7 +150,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      
   },
 
   /**

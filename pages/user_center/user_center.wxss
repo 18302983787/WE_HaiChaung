@@ -20,6 +20,12 @@
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
 }
 
+.head_image image{
+  height: 88.39px;
+  width: 88.39px;
+  border-radius: 50%;
+}
+
 .follows{
   height: 54.4px;
   margin-top: 116.45px;
@@ -113,6 +119,20 @@
   color:rgba(255, 255, 255, 0.95);
 }
 
+.big_tag{
+  height: 28px;
+  width: 70px;
+  text-align: center;
+  margin-right: 6px;
+  border-radius: 10.5px;
+  background:rgba(255, 255, 255, 0.2);
+}
+
+.big_tag text{
+  font-size: 12px;
+  color:rgba(255, 255, 255, 0.95);
+}
+
 .my_act{
   height: 68.0px;
   width: 42%;
@@ -138,7 +158,7 @@
 
 .my_act text{
   height:23.8px;
-  width: 68.0px;
+  width: 80px;
   margin-top:22px;
   margin-left: 7px;
   font-size: 17.0px;
@@ -169,7 +189,7 @@
 
 .my_job text{
   height:23.8px;
-  width: 68.0px;
+  width: 80px;
   margin-top:22px;
   margin-left: 7px;
   font-size: 17.0px;
@@ -215,16 +235,17 @@
 
 .extra_func .func_desc_2{
   height:21.25px;
-  margin-left: 92px;
   font-size: 12.75px;
+  margin-right: 16px;
   font-family:PingFangSC-Regular,PingFang SC;
   font-weight:400;
-  float: left;
+  float: right;
   line-height:17px;
   color:rgba(91, 141, 240, 1);
+  border:px red solid;
 }
 
-.extra_func .more{
+/* .extra_func .more{
   height: 15.299px;
   width: 9.35px;
   float: left;
@@ -234,4 +255,9 @@
   -moz-background-size: 100% 100%;
   margin-left: 4.25px;
   margin-top: 1.5px;
+} */
+
+
+.btn1 {
+  background-color: rgba(255, 255, 255, 0);
 }

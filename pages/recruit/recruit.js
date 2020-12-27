@@ -1,6 +1,7 @@
 // pages/recruit/recruit.js
 Page({
   goto_recruit:function(e){
+    console.log(e)
     var act=e.currentTarget.dataset;
     wx.navigateTo({
       url: '../out_link/out_link',
@@ -8,23 +9,54 @@ Page({
         res.eventChannel.emit('dataFromOpenPage',act)
       }
     })
-    
+  },
+
+  getInterested:function(e){
+    var that = this
+    console.log(e.currentTarget.dataset.item.uid)
+    console.log(that.data.user_session)
     wx.request({
-      url: 'https://haichuanghao.com/api/update_recruit_history',     
+      url: 'https://haichuanghao.com/api/get_interested',
       data:{
-        "rec_uid":data.item.uid,
-        "user_session":"",
+        "rec_id":e.currentTarget.dataset.item.uid,
+        "usr_session":that.data.user_session,
       },
       header:{
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       method:"POST",
       success(res){
-        console.log(data.item.uid)
-        console.log("stauts:", res.data.status)
+        console.log(res.data.status)
+        if (res.data.status=="success"){
+          wx.showToast({
+            title: '关注成功',
+            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+            duration: 2000     
+          })
+          that.onLoad()
+        } else if (res.data.status=="signed"){
+          wx.showToast({
+            title: '已关注',
+            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+            duration: 2000     
+          })
+        } else if (res.data.status=="error"){
+          wx.showToast({
+            title: '关注失败，请稍后重试',
+            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+            duration: 2000     
+          })
+        } else{
+          wx.showToast({
+            title: '未知错误，错误已上报',
+            icon: 'none',    //如果要纯文本，不要icon，将值设为'none'
+            duration: 2000     
+          })
+        }
       }
     })
   },
+
   /**
    * 页面的初始数据
    */
@@ -41,7 +73,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getActData();
+    this.getUserSession();
+  },
+
+
+  getUserSession:function(){
+    var that = this
+    wx.getStorage({
+      key: 'user_session',
+      success(e){
+        that.setData({
+          user_session:e.data
+        })
+        that.getActData();
+      }
+    })
   },
 
   getActData:function(){
@@ -63,6 +109,10 @@ Page({
       }
     })
   },
+
+
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -74,6 +124,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log("调用页面监听")
     wx.checkSession({
       success: function () {
         //session_key 未过期，并且在本生命周期一直有效
@@ -92,6 +143,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    console.log("调用页面隐藏")
   },
 
   /**

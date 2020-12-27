@@ -1,37 +1,39 @@
 <view class="content">
 	<swiper class="advertise_swiper" indicator-dots="{{indicatorDots}}" autoplay="true" interval="3000" vertical="{{isVertical}}" duration="1000" circular='false'>
-		<swiper-item wx:for="{{imgUrls}}" wx:key="key">
+		<swiper-item wx:for="{{activities}}" wx:key="key">
+			<view data-item="{{item}}" bindtap="goto_activity">
 			<view class="image_z_index">
-				<image src="{{item}}" mode="scaleToFill" />
+				<image src="{{item.posters}}" mode="scaleToFill" />
 			</view>
+		</view>
 		</swiper-item>
 	</swiper>
 
 	<view class="detail">
 		<view class="module">精彩活动</view>
-		<view class="activity" wx:for="{{activities}}" wx:key="key">
-			<view data-item="{{item}}" bindtap="goto_activity">
-			<view class="act_name">{{item.actname}}</view>
+		<view class="activity" wx:for="{{activities}}" wx:key="key" wx:for-item="act">
+			<view data-item="{{act}}" bindtap="goto_activity">
+			<view class="act_name">{{act.actname}}</view>
 			<view class="act_info">
 				<image src="../images/activity/ad_1.jpg"></image>
 				<view class="line_time">
 					<image src="../images/template/time2x.png"></image>
-					<text>{{item.act_time}}</text>
+					<text>{{act.act_time}}</text>
 				</view>
 				<view class="line_loc">
 					<image src="../images/template/loc2x.png"></image>
-					<text>{{item.loc}}</text>
+					<text>{{act.loc}}</text>
 				</view>
 				<view class="line_people">
 					<image src="../images/template/people2x.png"></image>
-					<text>{{item.people}}/{{item.people_limit}}</text>
+					<text>{{act.people}}/{{act.people_limit}}</text>
 				</view>
 			</view>
 			</view>
-			<view class="sign_up" data-uid="{{item.uid}}" bindtap="signUp"><text>立即报名</text></view>
-			<!-- <view class="sign_users" wx:for="{{item.signed_users}}" wx:key="key"> -->
-				<!-- <image src="item"></image> -->
-			<!-- </view> -->
+			<view class="sign_up" data-uid="{{act.uid}}" bindtap="signUp"><text>立即报名</text></view>
+      <view class="sign_users" data-item="{{act.uid}}" bindtap="goto_signers">
+        <image wx:for="{{act.user_images}}" wx:key="key" src="{{item}}"></image>
+			</view>
 		</view>
 	</view>
 </view>

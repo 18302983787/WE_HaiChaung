@@ -18,11 +18,13 @@ Page({
 
   gotoTab: function(e) {
     if (e.currentTarget.dataset.tab === "1") {
+      this.getMyRec()
       this.setData({
         isTabA: true,
         isTabB: false
       })
     } else if (e.currentTarget.dataset.tab === "2") {
+      this.getHisoryRec()
       this.setData({
         isTabA: false,
         isTabB: true
@@ -43,7 +45,7 @@ Page({
       key: 'user_session',
       success(e){
         wx.request({
-          url: 'https://haichuanghao.com/api/get_my_activity',
+          url: 'https://haichuanghao.com/api/get_my_recruit',
           data:{
             "user_session": e.data, 
             "get_type":"ongoing",
@@ -69,7 +71,7 @@ Page({
       key: 'user_session',
       success(e){
         wx.request({
-          url: 'https://haichuanghao.com/api/get_my_activity',
+          url: 'https://haichuanghao.com/api/get_my_recruit',
           data:{
             "user_session": e.data, 
             "get_type":"expired",

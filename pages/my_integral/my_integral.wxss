@@ -1,11 +1,69 @@
 /* pages/my_integral/my_integral.wxss */
-/* pages/my_activity/my_activity.wxss */
 @import "../template/common.wxss";
 .info_head{
-  height:125px;
+  margin-top: 100px;
+  height:180px;
   border:1px rgba(255, 255, 255, 0.001) solid;
 }
 
+.num_1 {
+  display: inline-block;
+  color:#FFF;
+  font-size: 15px;
+  margin: 50px 0 0 48px;
+}
+
+.num_2 {
+  display: inline-block;
+  color:#FFF;
+  font-size: 15px;
+  margin: 50px 0 0 30px;
+}
+
+.num_btn {
+  margin: 0 0 0 60px;
+  display: inline-block;
+  color:#3E81FF;
+  font-size: 15px;
+  background-color: #FFF;
+  width: 120px;
+  height: 40px;
+  background: #FFFFFF;
+  border-radius: 25px;
+  font-size: 16px;
+  font-family: PingFang-SC-Heavy, PingFang-SC;
+  font-weight: 800;
+  color: #3E81FF;
+  line-height: 28px;
+  text-align: center;
+}
+
+.num_btn span {
+  margin-top:10px;
+  line-height: 40px;
+}
+
+.num_top {
+  display: block;
+  font-size: 14px;
+  height: 18px;
+  font-size: 15px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 21px;
+}
+
+.num_buttom {
+  margin-top: 8px;
+  display: block;
+  height: 24px;
+  font-size: 24px;
+  /* font-family: WenYue-XinQingNianTi-NC-W8, WenYue-XinQingNianTi-NC; */
+  font-weight: normal;
+  color: #FFFFFF;
+  line-height: 24px;
+}
 
 .detail{
   float: left;
@@ -14,13 +72,23 @@
   background:#FFFFFF;
 }
 
+.detail .detail-title {
+  text-align: center;
+  font-size: 13px;
+  font-family: PingFang-SC-Heavy, PingFang-SC;
+  font-weight: 800;
+  color: #3E81FF;
+  line-height: 25px;
+  margin-top:20px;
+}
+
 .activties{
   margin-top: 31.45px;
   float: left;
 }
 
 .act{
-  width: 308.55px;
+  width: 310px;
   height: 69.7px;
   margin-left: 22.95px;
   margin-bottom: 20px;
@@ -30,15 +98,15 @@
 .act_image{
   width:69.7px;
   height:69.7px;
-  border-radius:9.600000000000001px;
-  border: 1px red solid;
+  border-radius:50px;
+  border: 1px rgba(62, 129, 255, 1) solid;
   float: left;
 }
 
 .act_name{
-  width:149.6px;
+  width:180px;
   height:25.5px;
-  font-size:18.7px;
+  font-size:15px;
   font-family:PingFangSC-Semibold,PingFang SC;
   font-weight:600;
   color:rgba(45,47,68,1);
@@ -49,7 +117,7 @@
 }
 
 .comments{
-  width:95.2px;
+  width:120px;
   height:18.7px;
   font-size:13.6px;
   font-family:PingFang-SC-Regular,PingFang-SC;
@@ -71,4 +139,3 @@
   margin-top: 11.9px;
   margin-left: 246.5px;
 }
-

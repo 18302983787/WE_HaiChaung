@@ -1,7 +1,7 @@
 <!--pages/regist/regist.wxml-->
 <view class="content">
   <view class="nav_back" bindtap="go_back"></view>
-  <view class="nav_back_title">完善信息</view>
+  <view class="nav_back_title">注册</view>
   <view class="info_head"></view>
   <!-- <view class="head">
   <view class="head_text">
@@ -41,10 +41,12 @@
       </mp-cells>
     </mp-form>
     <view>
-      <div class="register-btn">
+      <!-- <div class="register-btn">
         注册
+      </div> -->
+      <div class="register-btn">
+      <button class="weui-btn" type="primary" bindtap="submitForm">注册</button>
       </div>
-      <!-- <button class="weui-btn" type="primary" bindtap="submitForm">确定</button> -->
     </view>
     <!-- <view class="weui-btn-area">
         <button class="weui-btn" type="primary" bindtap="gotoDirect">跳过注册</button>

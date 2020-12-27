@@ -4,7 +4,7 @@
   <view class="nav_back_title">信息认证</view>
   <view class="id_back">
     <view wx:if="{{src_id_a.length > 0}}">
-        <image class="id_a" mode="aspectFit" src="{{src_id_a}}"></image>
+        <image class="id_a" mode="aspectFit" src="{{show_a}}"></image>
     </view>
     <view wx:else>
       <view class="id_a">
@@ -13,7 +13,7 @@
       </view>
     </view>
     <view wx:if="{{src_id_b.length > 0}}">
-        <image class="id_b" mode="aspectFit" src="{{src_id_b}}"></image>
+        <image class="id_b" mode="aspectFit" src="{{show_b}}"></image>
     </view>
     <view wx:else>
       <view class="id_b">
@@ -21,7 +21,6 @@
         <text class="id_txt">身份证国徽面</text>
       </view>
     </view>
-   
   </view>
   <view class="content_bottom">
       <view class="bottom_button" bindtap="identify"><text>认证</text></view>

@@ -1,11 +1,12 @@
 {
   "pages": [
-    "pages/my_identificate/my_identificate",
     "pages/index/index",
+    "pages/activity_signers/activity_signers",
+    "pages/regist/regist",
+    "pages/my_identificate/my_identificate",
     "pages/user_center/user_center",
     "pages/activity/activity",
     "pages/my_integral/my_integral",
-    "pages/regist/regist",
     "pages/personal_profile/personal_profile",
     "pages/details/details",
     "pages/my_follow/my_follow",

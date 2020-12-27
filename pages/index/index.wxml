@@ -8,5 +8,9 @@
   <view class="login_type">
     <text>——— 请选择登录方式 ———</text>
   </view>
-  <image class="we_login" src="../images/login/wechat_icon.png" bindtap="goto_regist"></image>
+
+  <button class='btn1' open-type="getUserInfo" bindgetuserinfo="wxlogin">
+    <image class='btnImg' src="../images/login/wechat_icon.png"></image>
+ </button>
+  <!-- <image class="wx_login"  bindtap="goto_regist"></image> -->
 </view>

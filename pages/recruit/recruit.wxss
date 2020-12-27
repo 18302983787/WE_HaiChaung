@@ -59,7 +59,7 @@
 }
 
 .like{
-  width: 38.25px;
+  width: 40px;
   height: 15px;
   float: left;
   margin-top: 18.7px;
@@ -83,7 +83,7 @@
 }
 
 .view{
-  width: 38.25px;
+  width: 40px;
   height: 15px;
   float: left;
   margin-top: 18.7px;
@@ -160,7 +160,7 @@
 }
 
 .text_bottom{
-  height: 15px;
+  height: 35px;
   margin-left: 19.55px;
   margin-top: 14.45px;
   float: left;

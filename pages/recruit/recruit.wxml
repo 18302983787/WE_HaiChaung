@@ -1,6 +1,6 @@
 <view class="content">
+  <view class="nav_back_title">海创招聘</view>
   <swiper class="advertise_swiper" indicator-dots="{{indicatorDots}}" autoplay="true" interval="3000" vertical="{{isVertical}}" duration="1000" circular='false'>
-    <view class="nav_back_title">海创招聘</view>
     <swiper-item wx:for="{{imgUrls}}" wx:key="key">
       <view class="image_z_index"><image src="{{item}}" mode="scaleToFill" /></view>
     </swiper-item>
@@ -11,7 +11,7 @@
     <block wx:for="{{recruits}}" wx:key="key">
       <view class="recruit_info" data-item="{{item}}" bindtap="goto_recruit">
         <view class="pub_time">发布时间 {{item.pub_time}}</view>
-        <view class="like">
+        <view class="like" data-item="{{item}}" catchtap="getInterested">
           <image src="../images/template/like2x.png"></image>
           <text>{{item.likes}}</text>
         </view>

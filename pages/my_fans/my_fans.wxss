@@ -23,7 +23,6 @@
   margin-top: 13.6px;
   margin-left: 17.0px;
   border-radius:16.0px;
-  border: 1px red solid;
   float: left;
 }
 .user_name{

@@ -2,10 +2,19 @@
 var app = getApp()
 Page({
   goto_activity:function(e){
-    console.log(e)
     var act=e.currentTarget.dataset;
     wx.navigateTo({
       url: '../details/details',
+      success: function(res){
+        res.eventChannel.emit('dataFromOpenPage',act)
+      }
+    })
+  }, 
+  goto_signers:function(e){
+    // 参加活动人物详情
+    var act=e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '../activity_signers/activity_signers',
       success: function(res){
         res.eventChannel.emit('dataFromOpenPage',act)
       }
@@ -37,23 +46,23 @@ Page({
     this.getUserSession();
   },
 
-  getActData:function(){
+    getActData:function(){
     var that = this;
     wx.request({
-      url: 'https://haichuanghao.com/api/request_info',
+      url: 'https://haichuanghao.com/api/get_activity',
       data:{
-        "table":"hc_activity"
+        "user_session":that.data.user_session
       },
       header:{
-        // 'content-type': 'application/json' // 默认值
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       method:"POST",
       success(res){
+        console.log(res)
         that.setData({
-          activities:res.data
+          activities:res.data.data
         })
-      }
+      },
     })
   },
 
@@ -69,6 +78,7 @@ Page({
       }
     })
   },
+
 
 
   signUp:function(e){
@@ -134,6 +144,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.onLoad()
     wx.checkSession({
       success: function () {
         //session_key 未过期，并且在本生命周期一直有效

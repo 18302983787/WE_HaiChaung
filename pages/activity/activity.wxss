@@ -1,4 +1,4 @@
-/* pages/recruit/recruit.wxss */
+/* pages/activity/activity.wxss */
 @import "../template/common.wxss";
 
 .advertise_swiper{
@@ -154,20 +154,51 @@
 }
 
 .sign_users{
-  float: left;
-  height: 26.64px;
-  margin-top: 11.1px;
-  margin-left: 84.14999999999999px;
+  float: right;
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.sign_users .avatar{
+  border: 1px solid  #649AFF;
+  margin-top:10px;
+  /* box-shadow: 0 0 0 1px #fff; */
+  margin-right: -5px !important;
+  background-size:100% 100%;
+  width: 27px;
+  height: 27px;
+  line-height: 20px;
+  /* display: inline-block; */
+  /* background: #2ddcd3 no-repeat center/cover; */
+  /* position: relative; */
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  vertical-align: bottom;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+	border-radius: 50%;
+  /* background-repeat:no-repeat; */
+  background-position:0px 0px;  
+}
 .sign_users image{
-  width:26.64px;
-  height:26.64px;
-  border:2px solid rgba(100,154,255,1);
-  float: left;
+  border: 1px solid  #649AFF;
+  margin-top:10px;
+  margin-right: -5px !important;
+  width: 27px;
+  height: 27px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  user-select: none;
+	border-radius: 50%;
 }
 
 
-
-
-
+.sign_users .more{
+  border: 0px;
+}

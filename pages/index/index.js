@@ -17,29 +17,24 @@ Page({
     })
   },
 
-  onLoad: function () {
+  onLoad: function (){
   },
   
-  goto_regist:function(){
+
+  goto_regist:function(e){
+    var that = this
     this.wxlogin();
+    
   },
 
-  wxlogin: function () {
+  wxlogin: function (e) {
     var that = this;
     wx.login({
       success(res){
-        // wx.getUserInfo({
-        //   success: function (res) {
-        //     console.log(res);
-        //     var avatarUrl = 'userInfo.avatarUrl';
-        //     var nickName = 'userInfo.nickName';
-        //     that.setData({
-        //       [avatarUrl]: res.userInfo.avatarUrl,
-        //       [nickName]: res.userInfo.nickName,
-        //     })
-        //   }
-        // })
         if (res.code){
+          wx.showLoading({
+            title: '正在登录...',
+          })
           wx.request({
             url: 'https://haichuanghao.com/api/onLogin',
             method:"POST",
@@ -50,23 +45,38 @@ Page({
               "code":res.code,
             },
             success(res){
-              app.globalData.user_session = res.data.user_session
               that.setData({
                 user_session:res.data.user_session,
               })
+              wx.request({
+                url: 'https://haichuanghao.com/api/update_head_image',
+                data:{
+                  "user_session":res.data.user_session,
+                  "head_image_url":e.detail.userInfo.avatarUrl,
+                },
+                header:{
+                  'content-type': 'application/x-www-form-urlencoded' // 默认值
+                },
+                method:"POST",
+                success(res){
+                  console.log(res.data)
+                }
+                })
               wx.setStorageSync('user_session', res.data.user_session)
+              wx.setStorageSync('head_image_url', e.detail.userInfo.avatarUrl)
               if (res.data.status === 'success'){
-              console.log("登录成功")
-              wx.switchTab({
-                url: '../activity/activity',
-              })
-              }
+                console.log("登录成功")
+                wx.switchTab({
+                  url: '../activity/activity',
+                })
+                }
               else{
                 console.log("用户未注册，无法登录")
                 wx.redirectTo({
                   url: '../regist/regist',
                 })
               }
+              wx.hideLoading()
           },
           })
         } else{
