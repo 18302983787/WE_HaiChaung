@@ -129,7 +129,7 @@ class HCDataBase:
 
     def execute_sql(self, sql):
         """
-        执行复杂嵌套查询语句
+        执行复杂嵌套查询语句 没有返回值
         :param sql: 具体sql
         :return boolean:
         """

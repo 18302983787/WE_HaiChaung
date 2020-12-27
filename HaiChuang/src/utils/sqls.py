@@ -16,6 +16,10 @@ group_concat(b.username) as username, group_concat(a.usr_session) as session, gr
 from hc_activity_sign as a left join (select username, user_session, head_image from hc_user) as b on 
 a.usr_session=b.user_session group by a.act_id) as d on c.uid=d.act_id;"""
 
+GET_ACTIVITY_SIGNERS = """select a.act_id,  a.usr_session, b.username, b.age, b.gender, b.head_image from 
+hc_activity_sign as a left join (select username, user_session, head_image, gender, age from hc_user) as b on 
+a.usr_session=b.user_session where act_id="{act_uid}";"""
+
 # =================================================用户中心==============================================================
 # 刷新用户头像
 UPDATE_USER_HEAD_IMAGE = """update hc_user set head_image="{head_image}" where user_session="{user_session}";"""
@@ -51,6 +55,10 @@ a.uid=b.rec_id) where DATE_FORMAT(rec_time,"%Y-%m-%d") {compare} "{today}";"""
 VIEW_PLUS_ONE = """update hc_recruit set views=views+1 where uid="{uid}"; """
 LIKE_PLUS_ONE = """update hc_recruit set likes=likes+1 where uid="{uid}"; """
 
+# ++++++++++++++++++++++++++++++++++++++++++++++++ 积分模块 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+# 获取用户积分和段位
+GET_USER_SCORE = """select score from hc_user where user_session="{user_session}";"""
+
 # ======================================================粉丝，关注模块====================================================
 # 查询用户粉丝信息
 GET_USER_FANS = """select a.usr_id, a.fans_id, a.fans_name, a.fans_session, b.head_image from (select usr_id, fans_id, 
@@ -64,6 +72,18 @@ fans_session="{user_session}") as a inner join hc_user as b on a.user_session=b.
 
 # 查询用户ab是否互相关注
 GET_RELATION = """SELECT 1 from hc_fans where usr_id = '{id_a}' and fans_id = '{id_b}';"""
+GET_RELATION_BY_SESSION = """SELECT 1 from hc_fans where user_session = '{session_a}' and fans_session = '{session_b}';"""
 
 # 查询用户是否存在在用户表中
 USER_SIGN_UP = """select uid, username, user_session from hc_user where user_session="{}";"""
+
+
+# 关注/取消关注模块
+# 如果表中没有数据则新增数据
+# 新增逻辑：1.insert数据 2.updata数据
+INSERT_FANS = """INSERT INTO hc_fans (user_session, fans_session) VALUES ("{user_session}", "{fans_session}");"""
+UPDATE_FANS = """update hc_fans a, (select uid, username from hc_user where user_session="{user_session}") b, (select uid, username 
+from hc_user where user_session="{fans_session}") c set a.usr_id=b.uid, a.usr_name=b.username, 
+a.fans_id=c.uid, a.fans_name=c.username where user_session="{user_session}" and fans_session="{fans_session}";"""
+# 如果表中有数据则删除数据
+DELETE_FANS = """delete from hc_fans where user_session="{user_session}" and fans_session="{fans_session}";"""

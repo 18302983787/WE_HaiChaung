@@ -9,13 +9,14 @@
 #      History:
 #=============================================================================
 """
-from utils.common_utils import date_2_string, get_relation
+from utils.common_utils import date_2_string, get_relation, get_relation_by_session
 from utils.filelog import logger
 
 
+# 解析我的活动返回值
 def reformat_activity(res):
     """
-
+    解析我的活动返回值
     :param res: 活动查询结果
     :return:
     """
@@ -39,6 +40,7 @@ def reformat_activity(res):
     return res_list
 
 
+# 解析我的活动的返回值
 def reformat_my_activity(res):
     """
     解析我的活动的返回值
@@ -81,6 +83,7 @@ def reformat_my_activity(res):
     return res_list
 
 
+# 解析我赞过的招聘的返回值
 def reformat_my_recruit(res):
     """
         解析我赞过的招聘的返回值
@@ -140,7 +143,7 @@ def reformat_my_relation(res, conn):
         # usr_id, fans_id 组成ids 用来查找关系； infos用来拼接数据
         ids, infos = list(line)[:2], list(line)[2:]
         # 先把每一行的数据拼接成字典
-        for k, v in zip(["name", "head_image", "user_session"], infos):
+        for k, v in zip(["name", "user_session", "head_image"], infos):
             logger.info(f"{k},{v}")
             tmp_dict[k] = v
         # 查找用户与粉丝的关系
@@ -211,3 +214,65 @@ def reformat_ocr_id(id_a, id_b, user_session):
     id_info["valid_date"] = id_b.get("valid_date")
     id_info["user_session"] = user_session
     return id_info
+
+
+# 解析活动报名人数返回值
+def reformat_activity_signers(user_session, res, conn):
+    """
+
+    :param user_session:
+    :param res:
+    :param conn:
+    :return:
+    """
+    res_list = []
+    if not res:
+        return res_list
+    # 将每一行数据生成的字典添加进列表
+    for line in res:
+        tmp_dict = {}
+        # 先把每一行的数据拼接成字典
+        for k, v in zip(["act_uid", "user_session", "username", "age", "gender", "head_image"], list(line)):
+            tmp_dict[k] = str(v)
+        if tmp_dict["user_session"] == user_session:
+            continue
+        tmp_dict["relation"] = get_relation_by_session(sessions=[user_session, tmp_dict["user_session"]], conn=conn)
+        res_list.append(tmp_dict)
+    return res_list
+
+
+# 解析积分查询结果及计算相对应的段位
+def reformat_score_and_level(res):
+    """
+    解析积分查询结果及计算相对应的段位
+    :param res: 积分查询结果
+    :return:
+    """
+    if not res:
+        return res
+    logger.info("score:",res)
+    score = res[0][0]
+    level = _get_level(score)
+    return score, level
+
+
+def _get_level(score):
+    """
+    计算级别
+    :param int score: 当前积分
+    :return str level: 当前等级
+    """
+    if score < 20:
+        return "童生"
+    elif 20 <= score <= 40:
+        return "秀才"
+    elif 40 <= score <= 100:
+        return "贡生"
+    elif 100 <= score <= 500:
+        return "举人"
+    elif 500 <= score <= 1000:
+        return "探花"
+    elif 1000 <= score <= 2000:
+        return "榜眼"
+    elif 2000 <= score <= 4000:
+        return "状元"

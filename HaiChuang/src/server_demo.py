@@ -112,6 +112,41 @@ def get_user_info():
     return format_res
 
 
+# 请求积分及签到状态
+@app.route("/api/get_user_score", methods=['POST'])
+def get_user_score():
+    # TODO 签到逻辑实现
+    ...
+    # user_session = request.values.get("user_session")
+    # conn = HCDataBase()
+    # format_res = {"status": "error", "data": dict()}
+    # try:
+    #     is_sign =
+    #     res = conn.execute_sql_return_res(sqls.GET_USER_SCORE.format(user_session=user_session))
+    #     score, level = reformat_score_and_level(res)
+    #     format_res["status"] = "success"
+    #     format_res["data"] = {"score": score, "level": level}
+    # except Exception as e:
+    #     logger.exception(e)
+    # return format_res
+
+
+# 签到
+@app.route("/api/daily_attendance", methods=['POST'])
+def daily_attendance():
+    user_session = request.values.get("user_session")
+    conn = HCDataBase()
+    format_res = {"status": "error", "data": dict()}
+    try:
+        res = conn.execute_sql_return_res(sqls.GET_USER_SCORE.format(user_session=user_session))
+        score, level = reformat_score_and_level(res)
+        format_res["status"] = "success"
+        format_res["data"] = {"score": score, "level": level}
+    except Exception as e:
+        logger.exception(e)
+    return format_res
+
+
 # 身份证ocr识别
 @app.route("/api/identify", methods=['POST'])
 def identify():
@@ -240,6 +275,33 @@ def get_my_activity():
     return {"status": status,
             "data": reformat_res,
             "length": len(reformat_res)}
+
+
+# 请求报名了活动x的用户
+@app.route("/api/get_activity_signers", methods=["POST"])
+def get_activity_signers():
+    """
+    请求报名了活动x的用户
+    :return dict:
+    """
+    user_session = request.values.get("user_session")
+    act_uid = request.values.get("act_uid")
+    logger.info(f"【api-get_activity_signers】user_session:{user_session}\tact_uid:{act_uid}")
+    conn = HCDataBase("HaiChuang")
+    reformat_res = []
+    try:
+        res = conn.execute_sql_return_res(sqls.GET_ACTIVITY_SIGNERS.format(act_uid=act_uid))
+        reformat_res = reformat_activity_signers(user_session, res, conn)
+        if not reformat_res:
+            logger.warning(f"活动{act_uid}暂时无人报名!")
+        else:
+            logger.info(f"活动{act_uid} 报名的用户有{reformat_res}")
+        status = "success"
+    except Exception as e:
+        logger.error(e)
+        status = "error"
+    return {"status": status,
+            "data": reformat_res}
 
 
 # 请求我的招聘
@@ -428,6 +490,41 @@ def get_my_relation():
         status = "error"
     return {"status": status,
             "data": reformat_res}
+
+
+# 关注/解除关注
+@app.route("/api/follow_or_not", methods=["POST"])
+def follow_or_not():
+    """
+    关注/取消关注共用一个接口，请求时后台进行判断，如果有数据则删除，如果没有数据则新增
+    :return dict: 粉丝列表
+    {"status": success,
+     "data":
+
+     }
+    """
+    user_session = request.values.get("user_session")
+    fans_session = request.values.get("fans_session")
+    conn = HCDataBase("HaiChuang")
+    res = ""
+    try:
+        # 获取用户关系
+        relation = get_relation_by_session(sessions=[user_session, fans_session], conn=conn)
+        # 0表示双方都未关注,-2表示用户b关注了用户a。此时显示的是关注，再次点击触发的应该是关注操作
+        if relation == 0 or relation == -2:
+            conn.execute_sql(sqls.INSERT_FANS.format(user_session=user_session, fans_session=fans_session))
+            conn.execute_sql(sqls.UPDATE_FANS.format(user_session=user_session, fans_session=fans_session))
+            res = 1
+        # -1表示用户a关注了用户b, 1表示互相关注. 此时显示的是已关注或者互相关注，再次点击触发的因该是取消关注操作
+        # elif relation == -1 or relation == 1:
+        else:
+            conn.execute_sql(sqls.DELETE_FANS.format(user_session=user_session, fans_session=fans_session))
+            res = -1
+        status = "success"
+    except Exception as e:
+        logger.exception(e)
+        status = "error"
+    return {"status": status, "res": res}
 
 
 # # 请求页面海报

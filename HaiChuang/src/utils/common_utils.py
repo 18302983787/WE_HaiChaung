@@ -88,6 +88,31 @@ def get_relation(ids, conn):
         return 0
 
 
+def get_relation_by_session(sessions, conn):
+    """
+    通过用户session获取两个用户的关系（单向关注，双向关注）
+    :param list sessions: sessions_a, sessions_b
+    :param conn: 当前的数据库连接
+    :return tuple: 关系元组
+        0 表示没有互相关注
+        1 表示互相关注
+    """
+    session_a, session_b = sessions
+    a = conn.execute_sql_return_res(sqls.GET_RELATION_BY_SESSION.format(session_a=session_a, session_b=session_b))
+    b = conn.execute_sql_return_res(sqls.GET_RELATION_BY_SESSION.format(session_a=session_b, session_b=session_a))
+    a = a[0][0] if a else 0
+    b = b[0][0] if b else 0
+    # TODO 此处可以增加用户ab的具体关系
+    if a == 1 and b == 1:
+        return 1
+    elif a == 1 and b == 0:
+        return -1
+    elif a == 0 and b == 1:
+        return -2
+    else:
+        return 0
+
+
 def get_access_token():
     access_token_api = f"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={config.APP_ID}&" \
                        f"secret={config.APP_SECRET}"
