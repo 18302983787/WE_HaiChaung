@@ -22,7 +22,7 @@
               </mp-checkbox-group>
           </mp-cell>
           <mp-cell prop="age" title="年龄" ext-class="register-cell">
-            <input bindinput="formInputChange" data-field="age" class="register-input" placeholder-class="register-placehoder" placeholder="请输入姓名"/>
+            <input bindinput="formInputChange" data-field="age" class="register-input" placeholder-class="register-placehoder" placeholder="请输入年龄"/>
           </mp-cell>
           <mp-cell prop="phone" title="电话" ext-class="register-cell">
             <input bindinput="formInputChange" data-field="phone" class="register-input" placeholder-class="register-placehoder" placeholder="请输入电话"/>

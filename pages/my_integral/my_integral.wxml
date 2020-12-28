@@ -3,17 +3,20 @@
   <view class="nav_back" bindtap="go_back"></view>
   <view class="nav_back_title">我的积分</view>
   <view class="info_head">
-    <div class="num_1">
+    <view class="num_1">
       <span class="num_top">积分数</span>
       <span class="num_buttom">{{score}}</span>
-    </div>
-    <div class="num_2">
+    </view>
+    <view class="num_2">
       <span class="num_top">段位</span>
       <span class="num_buttom num_fit">{{level}}</span>
-    </div>
-    <div class="num_btn">
+    </view>
+    <view wx:if="{{is_sign_today==0}}" class="num_btn" bindtap="daily_attendance">
       <span>签到</span>
-    </div>
+    </view>
+    <view wx:else class="num_btn_after">
+      <span>已签到</span>
+    </view>
   </view>
   <view class="detail">
     <view class="detail-title">

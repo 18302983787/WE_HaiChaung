@@ -116,7 +116,8 @@ Page({
         "loc":loc
       },
       success(res){
-        if (res.data.response=="success"){
+        console.log(res)
+        if (res.data.status=="success"){
           wx.showToast({
             title: '注册成功'
           })
@@ -125,7 +126,7 @@ Page({
           })
           }
         else{
-          console.log(res.data.response)
+          console.log(res.data.status)
         }
         }
     })

@@ -26,9 +26,6 @@ Page({
   data: {
     // banner
     imgUrls: [
-      '../images/activity/demo_1.jpg',
-      '../images/activity/demo_2.jpg',
-      '../images/activity/demo_3.jpg',
     ],
     indicatorDots: true, //是否显示面板指示点
     // autoplay: true, //是否自动切换

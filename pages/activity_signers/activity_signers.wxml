@@ -22,10 +22,10 @@
           <view wx:if="{{item.relation=='0'}}">
             <text>关注</text>
           </view>
-          <view wx:elif="{{item.relation=='-2'}}">
+          <view wx:elif="{{item.relation=='-1'}}">
             <text>关注</text>
           </view>
-          <view wx:elif="{{item.relation=='-1'}}">
+          <view wx:elif="{{item.relation=='-2'}}">
             <text>已关注</text>
           </view>
           <view wx:else>

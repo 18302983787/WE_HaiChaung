@@ -61,8 +61,8 @@ Page({
         wx.request({
           url: 'https://haichuanghao.com/api/follow_or_not',
           data:{
-            "user_session":sto_e.data,
-            "fans_session":e.currentTarget.dataset.item.user_session,
+            "user_session":e.currentTarget.dataset.item.user_session,
+            "fans_session":sto_e.data,
           },
           header:{
             'content-type': 'application/x-www-form-urlencoded' // 默认值

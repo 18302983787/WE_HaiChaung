@@ -15,7 +15,7 @@
 			<view data-item="{{act}}" bindtap="goto_activity">
 			<view class="act_name">{{act.actname}}</view>
 			<view class="act_info">
-				<image src="../images/activity/ad_1.jpg"></image>
+				<image src="{{act.posters}}"></image>
 				<view class="line_time">
 					<image src="../images/template/time2x.png"></image>
 					<text>{{act.act_time}}</text>

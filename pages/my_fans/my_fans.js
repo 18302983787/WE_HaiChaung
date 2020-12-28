@@ -41,7 +41,43 @@ Page({
         })
       }
     })
-    
+  },
+
+  follow_or_not:function(e){
+    var that = this
+    console.log(e)
+    wx.getStorage({
+      key: 'user_session',
+      success(sto_e){
+        wx.request({
+          url: 'https://haichuanghao.com/api/follow_or_not',
+          data:{
+            "user_session":sto_e.data,
+            "fans_session":e.currentTarget.dataset.item.user_session,
+          },
+          header:{
+            'content-type': 'application/x-www-form-urlencoded' // 默认值
+          },
+          method:"POST",
+          success(res){
+            console.log(res)
+            if (res.data.status == "success"){
+              if (res.data.res==1){
+                wx.showToast({
+                  title: '关注成功',
+                })
+              }
+              else{
+                wx.showToast({
+                  title: '取关成功',
+                })
+              }
+              that.onLoad()
+            }
+          },
+        })
+      }
+    })
   },
  
   go_back:function(){

@@ -6,7 +6,8 @@ Page({
    */
   data: {
     score:"",
-    level:""
+    level:"",
+    is_sign_today:"",
   },
 
   /**
@@ -27,10 +28,12 @@ Page({
           },
           method:"POST",
           success(res){
+            console.log(res)
             if (res.data.status == "success"){
               that.setData({
                 score:res.data.data.score,
                 level:res.data.data.level,
+                is_sign_today:res.data.data.is_sign_today,
               })
             }
           }
@@ -54,11 +57,12 @@ Page({
           },
           method:"POST",
           success(res){
-            console.log(res)
+            console.log("222",res)
             if (res.data.status == "success"){
               wx.showToast({
-                title: '签到成功！',
+                title: '已连续签到' + res.data.data.constant_sign + '天！',
               })
+              that.onLoad()
             }
           }
         })

@@ -82,11 +82,11 @@ Page({
             "user_session":e.data
           },
           header:{
-            // 'content-type': 'application/json' // 默认值
             'content-type': 'application/x-www-form-urlencoded' // 默认值
           },
           method:"POST",
           success(res){
+            console.log("??????", res)
             that.setData({
               user_info:res.data.data
             })
