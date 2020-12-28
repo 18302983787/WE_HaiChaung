@@ -9,6 +9,8 @@
 #      History:
 #=============================================================================
 """
+from datetime import datetime
+
 from utils.common_utils import date_2_string, get_relation, get_relation_by_session
 from utils.filelog import logger
 
@@ -250,10 +252,32 @@ def reformat_score_and_level(res):
     """
     if not res:
         return res
-    logger.info("score:",res)
-    score = res[0][0]
+    score, is_sign_today = res[0]
     level = _get_level(score)
-    return score, level
+    return score, level, is_sign_today
+
+
+def reformat_daily_attendance(res):
+    """
+    解析用户签到表
+    :param res:
+    :return:
+    """
+    res_list = []
+    # 将每一行数据生成的字典添加进列表
+    if not res:
+        return res_list
+    for line in res:
+        tmp_dict = {}
+        # 先把每一行的数据拼接成字典
+        for k, v in zip(["id", "user_session", "is_sign_today", "constant_sign", "last_sign"], list(line)):
+            logger.info(f"{k}: {v}")
+            if k == "last_sign":
+                tmp_dict[k] = v if v else datetime.now()
+            else:
+                tmp_dict[k] = v
+        res_list.append(tmp_dict)
+    return res_list
 
 
 def _get_level(score):

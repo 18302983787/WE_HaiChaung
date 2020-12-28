@@ -81,9 +81,13 @@ def get_relation(ids, conn):
     b = conn.execute_sql_return_res(sqls.GET_RELATION.format(id_a=id_b, id_b=id_a))
     a = a[0][0] if a else 0
     b = b[0][0] if b else 0
-    # TODO 此处可以增加用户ab的具体关系
+    # 增加用户ab的具体关系
     if a == 1 and b == 1:
         return 1
+    elif a == 1 and b == 0:
+        return -1
+    elif a == 0 and b == 1:
+        return -2
     else:
         return 0
 
@@ -102,7 +106,7 @@ def get_relation_by_session(sessions, conn):
     b = conn.execute_sql_return_res(sqls.GET_RELATION_BY_SESSION.format(session_a=session_b, session_b=session_a))
     a = a[0][0] if a else 0
     b = b[0][0] if b else 0
-    # TODO 此处可以增加用户ab的具体关系
+    # 增加用户ab的具体关系
     if a == 1 and b == 1:
         return 1
     elif a == 1 and b == 0:
@@ -153,3 +157,38 @@ def ocr_id_card(image_url, access_token):
     id_card_info = requests.post(ocr_url).json()
     logger.info(f"id_card_info : {id_card_info}")
     return id_card_info
+
+
+def calc_date_diff(date_1, date_2):
+    """
+    计算两个日期相差的天数
+    :param datetime date_1: 日期1
+    :param datetime date_2: 日期2
+    :return int : 相差的天数
+    """
+
+    return int((date_1 - date_2).days)
+
+
+def calc_exp(constant_sign):
+    """
+    根据连续签到天数增加积分
+    :param int constant_sign:
+    :return:
+    """
+    if constant_sign == 1:
+        return 1
+    elif constant_sign == 2:
+        return 2
+    elif constant_sign == 3:
+        return 3
+    elif constant_sign == 4:
+        return 4
+    elif constant_sign == 5:
+        return 8
+    elif constant_sign > 5:
+        return 8
+
+
+if __name__ == '__main__':
+    calc_date_diff(datetime.now(), datetime.now())

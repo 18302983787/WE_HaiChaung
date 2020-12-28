@@ -115,33 +115,45 @@ def get_user_info():
 # 请求积分及签到状态
 @app.route("/api/get_user_score", methods=['POST'])
 def get_user_score():
-    # TODO 签到逻辑实现
-    ...
-    # user_session = request.values.get("user_session")
-    # conn = HCDataBase()
-    # format_res = {"status": "error", "data": dict()}
-    # try:
-    #     is_sign =
-    #     res = conn.execute_sql_return_res(sqls.GET_USER_SCORE.format(user_session=user_session))
-    #     score, level = reformat_score_and_level(res)
-    #     format_res["status"] = "success"
-    #     format_res["data"] = {"score": score, "level": level}
-    # except Exception as e:
-    #     logger.exception(e)
-    # return format_res
-
-
-# 签到
-@app.route("/api/daily_attendance", methods=['POST'])
-def daily_attendance():
     user_session = request.values.get("user_session")
     conn = HCDataBase()
     format_res = {"status": "error", "data": dict()}
     try:
         res = conn.execute_sql_return_res(sqls.GET_USER_SCORE.format(user_session=user_session))
-        score, level = reformat_score_and_level(res)
+        score, level, is_sign_today = reformat_score_and_level(res)
         format_res["status"] = "success"
-        format_res["data"] = {"score": score, "level": level}
+        format_res["data"] = {"score": score, "level": level, "is_sign_today": is_sign_today}
+    except Exception as e:
+        logger.exception(e)
+    return format_res
+
+
+# 签到
+@app.route("/api/daily_attendance", methods=['POST'])
+def daily_attendance():
+    """
+    签到
+    :return:
+    """
+    user_session = request.values.get("user_session")
+    conn = HCDataBase()
+    format_res = {"status": "error", "data": dict()}
+    try:
+        res = conn.execute_sql_return_res(sqls.GET_DAILY_ATTENDANCE.format(user_session=user_session))
+        reformat_res = reformat_daily_attendance(res)[0]
+        # 检查最近一次签到日期,如果与今天相差一天。则刷新连续签到日期
+        if calc_date_diff(datetime.now(), reformat_res["last_sign"]) == 1:
+            exp = calc_exp(reformat_res["constant_sign"])
+            conn.execute_sql(sqls.UPDATE_SIGN.format(last_sign=date_2_string(datetime.now()), user_session=user_session)) # 修改签到状态
+            conn.execute_sql(sqls.UPDATE_USER_SCORE.format(exp=exp, user_session=user_session)) # 刷新连续签到日期
+            format_res["data"] = {"constant_sign": reformat_res["constant_sign"] + 1}
+        else:
+            # 连续签到变为0
+            exp = 1
+            conn.execute_sql(sqls.UPDATE_SIGN_TO_ZERO.format(last_sign=date_2_string(datetime.now()), user_session=user_session))
+            conn.execute_sql(sqls.UPDATE_USER_SCORE.format(exp=exp, user_session=user_session))
+            format_res["data"] = {"constant_sign": 1}
+        format_res["status"] = "success"
     except Exception as e:
         logger.exception(e)
     return format_res
@@ -441,9 +453,9 @@ def register():
     注册函数
     :return:
     """
+    res = {"status": "error"}
     table_name = request.values.get("table_name")
     register_info = dict()
-    # register_info["uid"] = request.values.get("table_length")
     register_info["user_session"] = request.values.get("user_session")
     register_info["head_image"] = request.values.get("head_image")
     register_info["username"] = request.values.get("username")
@@ -454,9 +466,18 @@ def register():
     register_info["loc"] = request.values.get("loc")
     register_info["graduate"] = request.values.get("graduate")
     conn = HCDataBase("HaiChuang")
-    response = conn.insert(table_name, register_info)
-    res = {"response": response}
-    return json.dumps(res)
+    score_info = dict()
+    score_info["user_session"] = register_info["user_session"]
+    try:
+        # 插入用户表
+        response = conn.insert(table_name, register_info)
+        # 插入用户积分表
+        score_res = conn.insert("hc_daily_attendance", score_info)
+        if response and score_res:
+            res["status"] = "success"
+    except Exception as e:
+        logger.exception(e)
+    return res
 
 
 # 请求我的粉丝信息
@@ -474,6 +495,7 @@ def get_my_relation():
 
      }
     """
+    logger.info("++++++++++++++++++++++++++ 【开始】我的粉丝/关注 +++++++++++++++++++++++++++")
     user_session = request.values.get("user_session")
     type_ = request.values.get("type").strip()
     conn = HCDataBase("HaiChuang")
@@ -488,6 +510,7 @@ def get_my_relation():
     except Exception as e:
         logger.exception(e)
         status = "error"
+    logger.info("++++++++++++++++++++++++++ 【结束】我的粉丝/关注 +++++++++++++++++++++++++++")
     return {"status": status,
             "data": reformat_res}
 
@@ -503,6 +526,7 @@ def follow_or_not():
 
      }
     """
+    logger.info("++++++++++++++++++++++++++ 【开始】关注模块 +++++++++++++++++++++++++++")
     user_session = request.values.get("user_session")
     fans_session = request.values.get("fans_session")
     conn = HCDataBase("HaiChuang")
@@ -524,6 +548,7 @@ def follow_or_not():
     except Exception as e:
         logger.exception(e)
         status = "error"
+    logger.info("++++++++++++++++++++++++++ 【结束】关注模块 +++++++++++++++++++++++++++")
     return {"status": status, "res": res}
 
 

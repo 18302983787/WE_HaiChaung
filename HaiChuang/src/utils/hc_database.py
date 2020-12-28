@@ -13,6 +13,8 @@
 import json
 import pymysql
 
+from collections import OrderedDict
+
 from utils.filelog import logger
 from utils.config import *
 from utils.common_utils import *
@@ -36,7 +38,7 @@ class HCDataBase:
         :return:
         """
         # 如果是插入报名表则不需要计算uid 直接插入即可
-        if table_name not in ["hc_activity_sign", "hc_id_cards", "hc_recruit_interested"]:
+        if table_name not in ["hc_activity_sign", "hc_id_cards", "hc_recruit_interested", "hc_daily_attendance"]:
             # 先查看当前表格的id是多少
             _sql = "SELECT id from {} order by id DESC limit 1;".format(
                 table_name)
@@ -62,25 +64,25 @@ class HCDataBase:
             logger.info("【insert success】 sql:'{}'".format(sql))
             return "success"
 
-    def insert_after_check_is_exist(self, table_name, data_dict):
-        """
-
-        :param table_name:
-        :param data_dict:
-        :return:
-        """
-        keys = data_dict.keys()
-        values = [str(i) for i in data_dict.values()]
-        sql = f"""INSERT INTO hc_id_cards({",".join(
-            keys)}) SELECT {"','".join(values)} FROM DUAL WHERE NOT EXISTS(SELECT *  FROM hc_id_cards WHERE user_session = '{user_session}');"""
-        res = self._execute_sql(sql, insert=True)
-        # 插入是否成功
-        if res == "failed":
-            logger.error("【insert failed】 sql:'{}'".format(sql))
-            return "failed"
-        else:
-            logger.info("【insert success】 sql:'{}'".format(sql))
-            return "success"
+    # def insert_after_check_is_exist(self, table_name, data_dict):
+    #     """
+    #
+    #     :param table_name:
+    #     :param data_dict:
+    #     :return:
+    #     """
+    #     keys = data_dict.keys()
+    #     values = [str(i) for i in data_dict.values()]
+    #     sql = f"""INSERT INTO hc_id_cards({",".join(
+    #         keys)}) SELECT {"','".join(values)} FROM DUAL WHERE NOT EXISTS(SELECT *  FROM hc_id_cards WHERE user_session = '{user_session}');"""
+    #     res = self._execute_sql(sql, insert=True)
+    #     # 插入是否成功
+    #     if res == "failed":
+    #         logger.error("【insert failed】 sql:'{}'".format(sql))
+    #         return "failed"
+    #     else:
+    #         logger.info("【insert success】 sql:'{}'".format(sql))
+    #         return "success"
 
     def select(self, table_name, fields="*", where=None):
         """

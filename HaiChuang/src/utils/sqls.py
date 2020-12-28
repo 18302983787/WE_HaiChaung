@@ -57,8 +57,14 @@ LIKE_PLUS_ONE = """update hc_recruit set likes=likes+1 where uid="{uid}"; """
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++ 积分模块 +++++++++++++++++++++++++++++++++++++++++++++++++++++
 # 获取用户积分和段位
-GET_USER_SCORE = """select score from hc_user where user_session="{user_session}";"""
-
+GET_USER_SCORE = """select a.score,b.is_sign_today from hc_user as a left join hc_daily_attendance as b on 
+a.user_session=b.user_session where a.user_session="{user_session}";"""
+# 获取用户签到表信息
+GET_DAILY_ATTENDANCE = """select * from hc_daily_attendance where user_session="{user_session}";"""
+# 签到
+UPDATE_SIGN = """update hc_daily_attendance set is_sign_today=1, constant_sign=constant_sign+1, last_sign="{last_sign}" where user_session="{user_session}";"""
+UPDATE_SIGN_TO_ZERO = """update hc_daily_attendance set is_sign_today=1, constant_sign=1, last_sign="{last_sign}" where user_session="{user_session}";"""
+UPDATE_USER_SCORE = """update hc_user set score=score+{exp} where user_session="{user_session}";"""
 # ======================================================粉丝，关注模块====================================================
 # 查询用户粉丝信息
 GET_USER_FANS = """select a.usr_id, a.fans_id, a.fans_name, a.fans_session, b.head_image from (select usr_id, fans_id, 
@@ -76,7 +82,6 @@ GET_RELATION_BY_SESSION = """SELECT 1 from hc_fans where user_session = '{sessio
 
 # 查询用户是否存在在用户表中
 USER_SIGN_UP = """select uid, username, user_session from hc_user where user_session="{}";"""
-
 
 # 关注/取消关注模块
 # 如果表中没有数据则新增数据
