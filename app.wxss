@@ -22,3 +22,10 @@
   font-family: "wenyue";
   src:url("服务器路径")
 } */
+
+.common_title {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}

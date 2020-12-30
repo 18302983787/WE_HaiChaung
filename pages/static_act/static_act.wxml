@@ -1,3 +1,4 @@
+<!--pages/static_act/static_act.wxml-->
 <view class="content">
 	<swiper class="advertise_swiper" indicator-dots="{{indicatorDots}}" autoplay="true" interval="3000" vertical="{{isVertical}}" duration="1000" circular='false'>
 		<swiper-item wx:for="{{activities}}" wx:key="key">
@@ -31,10 +32,28 @@
 				</view>
 			</view>
 			</view>
-			<view class="sign_up" data-uid="{{act.uid}}" bindtap="signUp"><text>立即报名</text></view>
+			<!-- <view class="sign_up" data-uid="{{act.uid}}" bindtap="signUp"><text>立即报名</text></view>
       <view class="sign_users" data-item="{{act.uid}}" bindtap="goto_signers">
         <image wx:for="{{act.user_images}}" wx:key="key" src="{{item}}"></image>
-			</view>
-		</view>
+			</view> -->
+    </view>
+    <!-- 组件显示 -->
+    <view hidden="{{currentTab == 0? false: true}}">
+      <component_tmp_act/>
+    </view>
+    <view hidden="{{currentTab == 1? false: true}}">
+      <component_tmp_rec/>
+    </view>
+    <view hidden="{{currentTab == 2? false: true}}">
+      <component_tmp_user_center/>
+    </view>
+
+    <!-- 自定义 tabbar -->
+    <view class="nav-tabs">
+      <view class="tab-list {{currentTab == idx ? 'active' : 'default' }}" wx:for="{{items}}" wx:key="prototype" wx:for-index="idx" wx:for-item="item" data-current="{{idx}}" bindtap="swichNav">
+        <text class="tab-text" wx:for-index="idx" data-current="{{idx}}" src="{{currentTab == idx ? item.selectedIconPath : item.iconPath }}">{{item.text}}</text>
+        <image class="iconPath" wx:for-index="idx" data-current="{{idx}}" src="{{currentTab == idx ? item.selectedIconPath : item.iconPath }}"></image>
+      </view>
+    </view>
 	</view>
 </view>

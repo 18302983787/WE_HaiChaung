@@ -1,0 +1,68 @@
+<!--pages/user_center/user_center.wxml-->
+<view class="content">
+  <view class="info_head">
+    <view class="head_image">
+      <image mode="widthFix" src="http://haichuanghao.com/images/head_images/head_image_0001.jpg"></image>
+    </view>
+    <view class="follows">
+      <text class="t_wenyue">0</text>
+      <text class="t_normal">关注</text>
+    </view>
+    <!-- <view class="fans" bindtap="goto_fans"> -->
+    <view class="fans">
+      <text class="t_wenyue">0</text>
+      <text class="t_normal">粉丝</text>
+    </view>
+    <!-- <view class="points" bindtap="goto_points"> -->
+    <view class="points">
+      <text class="t_wenyue">0</text>
+      <text class="t_normal">积分</text>
+    </view>
+    <view class="user">
+      <text class="t_username">海创游客</text>
+      <view class="tag_content">
+        <button class="big_tag" open-type="getUserInfo" bindgetuserinfo="wxlogin"><text>注册/登录解锁更多功能</text></button>
+        <!-- <view class="tag"><text>招聘</text></view> -->
+      </view>
+    </view>
+  </view>
+  <view class="detail">
+    <view class="my_act">
+      <image src="../images/user_center/activity.png"></image>
+      <text>我的活动</text>
+    </view>
+    <view class="my_job">
+      <image src="../images/user_center/job.png"></image>
+      <text>我的招聘</text>
+    </view>
+    <view class="extra_func">
+      <image class="func_icon" src="../images/user_center/renzheng.png"></image>
+      <text class="func_name">认证中心</text>
+      <text class="func_desc_1">实名认证</text>
+    </view>
+    <view class="extra_func" bindtap="goto_config">
+      <image class="func_icon" src="../images/user_center/config.png"></image>
+      <text class="func_name">设置</text>
+      <button class="btn1" open-type='openSetting' bindopensetting="callback"><text class="func_desc_2">个人权限</text></button>
+      <view class="more"></view>
+    </view>
+  </view>
+  <!-- 组件显示 -->
+  <view hidden="{{currentTab == 0? false: true}}">
+    <component_tmp_act/>
+  </view>
+  <view hidden="{{currentTab == 1? false: true}}">
+    <component_tmp_rec/>
+  </view>
+  <view hidden="{{currentTab == 2? false: true}}">
+    <component_tmp_user_center/>
+  </view>
+
+  <!-- 自定义 tabbar -->
+  <view class="nav-tabs">
+    <view class="tab-list {{currentTab == idx ? 'active' : 'default' }}" wx:for="{{items}}" wx:key="prototype" wx:for-index="idx" wx:for-item="item" data-current="{{idx}}" bindtap="swichNav">
+      <text class="tab-text" wx:for-index="idx" data-current="{{idx}}" src="{{currentTab == idx ? item.selectedIconPath : item.iconPath }}">{{item.text}}</text>
+      <image class="iconPath" wx:for-index="idx" data-current="{{idx}}" src="{{currentTab == idx ? item.selectedIconPath : item.iconPath }}"></image>
+    </view>
+  </view>
+</view>

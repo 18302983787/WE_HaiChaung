@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/static_act/static_act",
+    "pages/static_recruit/static_recruit",
+    "pages/static_user_center/static_user_center",
     "pages/index/index",
     "pages/activity_signers/activity_signers",
     "pages/regist/regist",
@@ -17,8 +20,8 @@
     "pages/logs/logs",
     "pages/out_link/out_link",
     "pages/my_config/my_config"
-
   ],
+  
   "window": {
     "backgroundTextStyle": "light",
     "navigationStyle": "custom",
@@ -26,6 +29,7 @@
     "navigationBarTextStyle": "black",
     "navigationBarBackgroundColor": "#F8F8F8"
   },
+
   "tabBar": {
     "color": "#ADC9FE",
     "opacity": 0.4,

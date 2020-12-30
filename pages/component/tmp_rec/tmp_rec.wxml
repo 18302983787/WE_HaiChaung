@@ -1,0 +1,4 @@
+<!--pages/template_tarbar/tmp_rec/tmp_rec.wxml-->
+<view class="component_my_wrapper">
+  <text class="common_title"></text>
+</view>

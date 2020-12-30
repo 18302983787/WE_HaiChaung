@@ -3,7 +3,7 @@
   <view class="nav_back" bindtap="go_back"></view>
   <view class="nav_back_title">活动详情</view>
   <view class="info_head">
-    <image src="{{act_detail.iamge}}" mode="scaleToFill"></image>
+    <image src="{{act_detail.item.posters}}" mode="scaleToFill"></image>
   </view>
   <view class="detail">
     <view class="content_top">

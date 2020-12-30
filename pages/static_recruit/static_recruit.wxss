@@ -33,7 +33,7 @@
   background:#FFFFFF;
   margin-top: -25px;
   position: relative;
-  z-index: 100;
+  z-index: 10;
 }
 
 
@@ -206,4 +206,41 @@
   font-weight:800;
   color:rgba(100,154,255,1);
   line-height:15px;
+}
+
+
+/* 自定义tarbar */
+.nav-tabs {
+  width: 100%;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #ADC9FE;
+  background-color: #558FFD;
+  z-index: 20;
+}
+
+.tab-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+  height: 120rpx;
+  z-index: 20;
+}
+
+.tab-text {
+  font-size: 24rpx;
+  line-height: 35rpx;
+  color: #ADC9FE;
+  z-index: 20;
+}
+
+.iconPath {
+  width:54rpx;
+  height: 54rpx;
+  z-index: 20;
 }

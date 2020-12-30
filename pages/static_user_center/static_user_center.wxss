@@ -72,8 +72,8 @@
 }
 
 .user{
-  width: 141.1px;
-  height: 52px;
+  width: 180px;
+  height: 70px;
   margin-top: 187.0px;
   margin-left: 22px;
   
@@ -102,6 +102,7 @@
   display:flex;
   flex-direction:row;
   justify-content:left;
+
 }
 
 .tag{
@@ -120,11 +121,14 @@
 
 .big_tag{
   height: 28px;
-  width: 70px;
+  /* width: 180px; */
   text-align: center;
   margin-right: 6px;
   border-radius: 10.5px;
   background:rgba(255, 255, 255, 0.2);
+  margin-top: 0px;
+  padding-top: 0px;
+  border-top:0px;
 }
 
 .big_tag text{
@@ -141,9 +145,6 @@
   background:rgba(255,255,255,1);
   box-shadow:0px 1px 25px -2px rgba(0,13,82,1);
   float: left;
-  /* display: flex; */
-  /* flex-direction:row; */
-  /* justify-content:left; */
 }
 
 .my_act image{
@@ -241,19 +242,43 @@
   color:rgba(91, 141, 240, 1);
 }
 
-/* .extra_func .more{
-  height: 15.299px;
-  width: 9.35px;
-  float: left;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAASCAYAAACNdSR1AAAAhUlEQVQ4T2NkYAhl1tF/n8XAwMBw5eKf6QwMB/6A2NgAo46+SxIjA8NcsOT//2suX/obiUsDo7aeSzATI8MauEl4NDCCFOnoOfcwMjIWE9IAVkysBrhiYjSgKCakAUMxPg1YFWPT8J+BIY9yxbiCknwPEooc0iOFkImwWCYtIZGURElJ/AANrY6zBnfpqwAAAABJRU5ErkJggg==");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  margin-left: 4.25px;
-  margin-top: 1.5px;
-} */
-
 
 .btn1 {
   background-color: rgba(255, 255, 255, 0);
+}
+
+/* 自定义tarbar */
+.nav-tabs {
+  width: 100%;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #ADC9FE;
+  background-color: #558FFD;
+  z-index: 20;
+}
+
+.tab-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+  height: 120rpx;
+  z-index: 20;
+}
+
+.tab-text {
+  font-size: 24rpx;
+  line-height: 35rpx;
+  color: #ADC9FE;
+  z-index: 20;
+}
+
+.iconPath {
+  width:54rpx;
+  height: 54rpx;
+  z-index: 20;
 }

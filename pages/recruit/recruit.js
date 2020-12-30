@@ -63,9 +63,8 @@ Page({
   data: {
     // swiper
     imgUrls: [
-      '../images/activity/demo_1.jpg',
-      '../images/activity/demo_2.jpg',
-      '../images/activity/demo_3.jpg',
+      'http://haichuanghao.com/images/recruit_posters/recruit_posters_1.jpg',
+      'http://haichuanghao.com/images/recruit_posters/recruit_posters_1.png',
     ],
     recruits:{},
   },
@@ -124,6 +123,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.onLoad()
     console.log("调用页面监听")
     wx.checkSession({
       success: function () {

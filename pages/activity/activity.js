@@ -2,9 +2,11 @@
 var app = getApp()
 Page({
   goto_activity:function(e){
+    console.log("goto activity", e)
     var act=e.currentTarget.dataset;
     wx.navigateTo({
-      url: '../details/details',
+      // url: '../details/details',
+      url: '../out_link/out_link',
       success: function(res){
         res.eventChannel.emit('dataFromOpenPage',act)
       }
@@ -141,19 +143,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.onLoad()
-    wx.checkSession({
-      success: function () {
-        //session_key 未过期，并且在本生命周期一直有效
-        return ;
-      },
-      fail: function () {
-        // session_key 已经失效，需要重新执行登录流程
-        wx.navigateTo({
-          url: '../index/index'
-        })
-      }
-    })
+    // this.onLoad()
+    // wx.checkSession({
+    //   success: function () {
+    //     //session_key 未过期，并且在本生命周期一直有效
+    //     return ;
+    //   },
+    //   fail: function () {
+    //     // session_key 已经失效，需要重新执行登录流程
+    //     wx.navigateTo({
+    //       url: '../index/index'
+    //     })
+    //   }
+    // })
   },
 
   /**

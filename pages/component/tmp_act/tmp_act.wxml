@@ -1,0 +1,6 @@
+<!--pages/template_tarbar/tmp_act/tmp_act.wxml-->
+<view class="component_car_wrapper">
+  <text class="common_title"></text>
+</view>
+
+

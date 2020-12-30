@@ -77,7 +77,6 @@
   width:70px;
   height:70px;
   border-radius:9.6px;
-  border: 1px red solid;
   float: left;
 }
 
@@ -117,4 +116,19 @@
   margin-top: 11.9px;
   margin-left: 246.5px;
 }
+
+.loc{
+  width:62.05px;
+  height:14.45px;
+  font-size:10.2px;
+  font-family:PingFang-SC-Medium,PingFang-SC;
+  font-weight:500;
+  color:rgba(71, 134, 254, 1);
+  line-height:14.45px;
+  margin-top: 12px;
+  margin-left: 246.5px;
+}
+
+
+
 

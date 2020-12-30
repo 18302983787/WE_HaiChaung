@@ -17,9 +17,11 @@ Page({
     })
   },
   goto_detail:function(e){
+    console.log("从我的活动跳转到活动页面", e)
     var act=e.currentTarget.dataset;
     wx.navigateTo({
-      url: '../details/details',
+      // url: '../details/details',
+      url:'../out_link/out_link',
       success: function(res){
         res.eventChannel.emit('dataFromOpenPage',act)
       }

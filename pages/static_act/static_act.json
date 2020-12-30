@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "component_tmp_act": "/pages/component/tmp_act/tmp_act",
+    "component_tmp_rec": "/pages/component/tmp_rec/tmp_rec",
+    "component_tmp_user_center": "/pages/component/tmp_user_center/tmp_user_center"
+  }
+}

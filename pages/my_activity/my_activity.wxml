@@ -14,10 +14,12 @@
         <view class="act" wx:for="{{my_acts.data}}" wx:key="key">
           <view data-item="{{item}}" bindtap="goto_detail">
             <view class="act">
-              <view class="act_image"></view>
+              <view class="act_image">
+                <image class="act_image" src="{{item.posters}}"></image>
+              </view>
               <view class="act_name">{{item.actname}}</view>
-              <view class="comments">{{item.act_detail}}</view>
               <view class="time">{{item.act_time}}</view>
+              <view class="loc">{{item.loc}}</view>
               <!-- <view class="sign_up" data-uid="{{item.uid}}" bindtap="signUp"><text>立即报名</text></view> -->
             </view>
           </view>
